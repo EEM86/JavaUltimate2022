@@ -9,9 +9,9 @@ public class DemoMergeSortList {
 
     final List<Integer> list = new ArrayList<>();
     list.add(2);
-    list.add(4);
-    list.add(5);
+    list.add(7);
     list.add(1);
+    list.add(5);
 
     System.out.println(mergeList(list));
   }
@@ -33,7 +33,8 @@ public class DemoMergeSortList {
     return merge(list, left, right);
   }
 
-  private static <T extends Comparable<T>> List<T> merge(List<T> list, List<T> left, List<T> right) {
+  private static <T extends Comparable<T>> List<T> merge(List<T> list, List<T> left,
+                                                         List<T> right) {
     int leftIdx = 0, rightIdx = 0, currentIdx = 0;
 
     while (leftIdx < left.size() && rightIdx < right.size()) {
@@ -44,15 +45,14 @@ public class DemoMergeSortList {
       }
     }
 
-    fillList(leftIdx, left, list, currentIdx);
-    fillList(rightIdx, right, list, currentIdx);
+    while (leftIdx < left.size()) {
+      list.set(currentIdx++, left.get(leftIdx++));
+    }
+
+    while (rightIdx < right.size()) {
+      list.set(currentIdx++, right.get(rightIdx++));
+    }
 
     return list;
-  }
-
-  private static <T extends Comparable<T>> void fillList(int subIdx, List<T> subList, List<T> dest, int destIdx) {
-    while (subIdx < subList.size()) {
-      dest.set(destIdx++, subList.get(subIdx++));
-    }
   }
 }
