@@ -19,7 +19,28 @@ public class PrintFormattedTableTask {
 //  6     a     porosiatko    c     10
 //  11    12    13            14    15
 //  16
-  public static void main(String[] args) {}
+  public static void main(String[] args) {
+      String[] input =
+          new String[]{"1", "2", "3", "x", "5", "6", "a", "porosiatko", "c01", "10", "11", "12", "13", "14", "15", "16"};
+      int distance = 4;
+      int columns = 5;
+      int[] maxColumnLength = new int[columns];
+      for (int i = 0; i < input.length; i++) {
+        int itemLength = input[i].length();
+        int itemColumn = i % columns;
+        if (maxColumnLength[itemColumn] < itemLength) {
+          maxColumnLength[itemColumn] = itemLength;
+        }
+      }
 
+      for (int i = 0; i < input.length; i++) {
+        int itemColumn = i % columns;
+        final String item = input[i];
+        System.out.print(item.concat(" ".repeat(maxColumnLength[itemColumn] - item.length() + distance)));
+        if (itemColumn == columns - 1) {
+          System.out.print("\n");
+        }
+      }
+  }
 
 }
