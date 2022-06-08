@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task;
+package yym.svydovets.concurrency.task;
 
 public class DeadLockTask {
 
