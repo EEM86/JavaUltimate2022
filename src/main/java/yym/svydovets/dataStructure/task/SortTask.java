@@ -16,16 +16,17 @@ public class SortTask {
     System.out.print(Arrays.toString(array));
   }
 
+  // ToDo implement mergeSort
   private static void mergeSort(int[] array) {
+
   }
 
-  private static void merge(int[] array, int[] left, int[] right) {
-  }
-
+  // ToDo implement bubbleSort
   private static void bubbleSort(int[] array) {
 
   }
 
+  // ToDo implement insertionSort
   private static void insertionSort(int[] array) {
 
   }

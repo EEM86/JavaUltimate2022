@@ -1,5 +1,6 @@
 package yym.svydovets.javaBaseLib;
 
+import yym.svydovets.javaBaseLib.task.RandomFieldComparator;
 import yym.svydovets.utils.Account;
 import yym.svydovets.utils.Accounts;
 
