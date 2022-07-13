@@ -1,6 +1,7 @@
 package yym.svydovets.task;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class NasaService {
   private final static String URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos";
   private final String API_KEY = "DEMO_KEY";
 
+  @Cacheable("maxImage")
   public String findMaxImage(int sol) throws IOException, InterruptedException {
     final HttpClient httpClient = HttpClient.newBuilder().followRedirects(Redirect.ALWAYS).build();
     final URI uri = UriComponentsBuilder

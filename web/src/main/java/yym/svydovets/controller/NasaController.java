@@ -22,5 +22,4 @@ public class NasaController {
   public String printLargestImage(@PathVariable int sol) throws IOException, InterruptedException {
     return service.findMaxImage(sol);
   }
-
 }
