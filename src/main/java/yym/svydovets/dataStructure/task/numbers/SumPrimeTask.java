@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task;
+package yym.svydovets.dataStructure.task.numbers;
 
 public class SumPrimeTask {
 
