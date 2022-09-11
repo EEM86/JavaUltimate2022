@@ -2,15 +2,14 @@ package yym.svydovets.dataStructure.task.numbers;
 
 import java.util.Arrays;
 import java.util.Stack;
-import java.util.function.Function;
-import java.util.function.IntFunction;
 
 import org.apache.commons.lang3.NotImplementedException;
 
 public class AsteroidCollision {
 
   public static void main(String[] args) {
-    int[] arr = new int[]{-2,-2,1,-2};
+    int[] arr = new int[]{5, 10, -5};
+//    int[] arr = new int[]{-2,-2,1,-2};
     System.out.println(Arrays.toString(asteroidCollisionOptimal(arr)));
   }
   /*

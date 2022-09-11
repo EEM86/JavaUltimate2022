@@ -20,7 +20,7 @@ public class BestTimeToBuyAndSellStock {
   Output: 5
   Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
   Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
-
+  https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
   */
   static int maxProfit(int[] prices) {
     throw new NotImplementedException();

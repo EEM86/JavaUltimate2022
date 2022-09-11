@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task.strings;
+package yym.svydovets.dataStructure.task.matrix;
 
 import org.apache.commons.lang3.NotImplementedException;
 

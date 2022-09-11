@@ -12,7 +12,11 @@ import java.util.Map;
 public class TwoSum {
 
   public static void main(String[] args) {
-//    var nums = new int[] {2,3,11,15};
+//    var nums = new int[]{2,7,11,15};
+//    var target = 9;
+//    System.out.println(Arrays.toString(twoSum(nums, target)));
+
+//    var nums = new int[] {2,7,11,15};
 //    var target = 9;
 //    System.out.println(Arrays.toString(twoSumV2(nums, target)));
 

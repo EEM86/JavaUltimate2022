@@ -3,6 +3,7 @@ package yym.svydovets.dataStructure.task.strings;
 import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,12 +14,12 @@ import java.util.stream.Stream;
 public class Anagram {
 
   public static void main(String[] args) {
-    var s = "anagram";
-    var t = "nagaram";
-//    System.out.println(isAnagramSiteOptimal(s, t));
+//    var s = "anagraz";
+//    var t = "nagaram";
+//    System.out.println(isAnagram(s, t));
 
 
-    var list = new String[]{"bdddddddddd","bbbbbbbbbbc"};
+    var list = new String[]{"eat","tea","tan","ate","nat","bat"};
     final List<List<String>> res = groupAnagrams(list);
     Stream.of(res).flatMap(List::stream).forEach(System.out::println);
   }
