@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TwoSum {
 
@@ -61,7 +62,8 @@ public class TwoSum {
 
 
   /*
-  Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+  Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k,
+  and nums[i] + nums[j] + nums[k] == 0.
   Notice that the solution set must not contain duplicate triplets.
   Example:
   Input: nums = [-1,0,1,2,-1,-4]
