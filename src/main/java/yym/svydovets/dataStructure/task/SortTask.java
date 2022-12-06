@@ -60,15 +60,17 @@ public class SortTask {
     }
   }
 
-  private static void insertionSort(int[] array) {
-    for (int i = 1; i < array.length; i++) {
-      var current = array[i];
-      while (i > 0 && current < array[i - 1]) {
-        array[i] = array[i - 1];
-        array[i - 1] = current;
-        i--;
+  private static int[] insertionSort(int[] arr) {
+    for (int i = 1; i < arr.length; i++) {
+      var current = arr[i];
+      var idx = i - 1;
+      while (idx >= 0 && (current < arr[idx])) {
+        arr[idx + 1] = arr[idx];
+        idx--;
       }
+      arr[idx + 1] = current;
     }
+    return arr;
   }
 
 }
