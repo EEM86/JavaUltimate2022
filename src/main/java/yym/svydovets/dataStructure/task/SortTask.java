@@ -3,6 +3,8 @@ package yym.svydovets.dataStructure.task;
 import yym.svydovets.utils.ArrGen;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class SortTask {
 
@@ -14,6 +16,8 @@ public class SortTask {
 //    mergeSort(array);
     System.out.println();
     System.out.print(Arrays.toString(array));
+
+    //    checkMergeList();
   }
 
   // ToDo implement mergeSort
@@ -29,6 +33,23 @@ public class SortTask {
   // ToDo implement insertionSort
   private static void insertionSort(int[] array) {
 
+  }
+
+  //ToDo implement mergeSort with generics List
+  private static <T extends Comparable<? super T>> void mergeSort(List<T> list, Comparator<? super T> comparator) {
+
+  }
+
+  private static void checkMergeList() {
+    var list = ArrGen.generateList(10, 40);
+
+    System.out.println();
+    list.forEach(o -> System.out.print(o + " "));
+    System.out.println();
+
+    mergeSort(list, Comparator.naturalOrder());
+
+    list.forEach(o -> System.out.print(o + " "));
   }
 
 }
