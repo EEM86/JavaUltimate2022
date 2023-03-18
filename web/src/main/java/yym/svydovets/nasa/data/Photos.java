@@ -3,6 +3,7 @@ package yym.svydovets.nasa.data;
 import java.util.List;
 
 public class Photos {
+
   private List<Photo> photos;
 
   public Photos() {

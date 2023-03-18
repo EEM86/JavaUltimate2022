@@ -17,12 +17,13 @@ import java.util.stream.StreamSupport;
 
 public class HttpRequestDemo {
 
-  private final static String NASA_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=15&api_key=DEMO_KEY";
+  private final static String NASA_URL =
+      "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=15&api_key=DEMO_KEY";
 
   public static void main(String[] args) throws IOException, InterruptedException {
 //    viaRestTemplate();
 //    viaHttpClient();
-      sendPost();
+    sendPost();
   }
 
   private static void sendPost() throws IOException, InterruptedException {
