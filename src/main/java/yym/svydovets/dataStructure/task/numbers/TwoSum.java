@@ -3,9 +3,9 @@ package yym.svydovets.dataStructure.task.numbers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class TwoSum {
 
@@ -14,7 +14,7 @@ public class TwoSum {
 //    var target = 9;
 //    System.out.println(Arrays.toString(twoSumV2(nums, target)));
 
-    var threeNums = new int[]{-1,0,1,2,-1,-4};
+    var threeNums = new int[] {4, 0, 1, 2, -1, -4};
     threeSum(threeNums).forEach(System.out::println);
 
   }
@@ -35,7 +35,7 @@ public class TwoSum {
     for (int i = 0; i < n; i++) {
       for (int j = i; j < n - 1; j++) {
         if (nums[i] + nums[j + 1] == target) {
-          return new int[]{i, j+1};
+          return new int[] {i, j + 1};
         }
       }
     }
@@ -66,11 +66,11 @@ public class TwoSum {
       } else if (numbers[leftPointer] + numbers[rightPointer] < target) {
         leftPointer++;
       } else {
-        return new int[]{leftPointer + 1, rightPointer + 1};
+        return new int[] {leftPointer + 1, rightPointer + 1};
       }
     }
 
-    return new int[]{};
+    return new int[] {};
   }
 
   static int[] twoSumOptimal(int[] nums, int target) {
@@ -79,7 +79,7 @@ public class TwoSum {
       var numToFind = target - nums[i];
       var captured = valueToIndexMap.get(numToFind);
       if (captured != null) {
-        return new int[]{captured, i};
+        return new int[] {captured, i};
       } else {
         valueToIndexMap.put(nums[i], i);
       }
@@ -103,33 +103,24 @@ public class TwoSum {
    */
   static List<List<Integer>> threeSum(int[] nums) {
     Arrays.sort(nums);
-    List<List<Integer>> sol = new LinkedList<>();
-
+    Set<List<Integer>> result = new HashSet<>();
     for (int i = 0; i < nums.length - 2; i++) {
-      if (i == 0 || (nums[i] != nums[i - 1])) {
-        var target = 0 - nums[i];
-        var left = i + 1;
-        var right = nums.length -1;
-
-        while (left < right) {
-          if (nums[left] + nums[right] == target) {
-            sol.add(List.of(nums[i], nums[left], nums[right]));
-            while (left < right && nums[left] == nums[left + 1]) {
-              left++;
-            }
-            while (left < right && nums[right] == nums[right -1]) {
-              right--;
-            }
-            left++;
-          } else if (nums[left] + nums[right] > target) {
-            right--;
-          } else {
-            left++;
-          }
+      int leftIdx = i + 1;
+      int rightIdx = nums.length - 1;
+      while (leftIdx < rightIdx) {
+        int sum = nums[i] + nums[leftIdx] + nums[rightIdx];
+        if (sum == 0) {
+          var list = List.of(nums[i], nums[leftIdx], nums[rightIdx]);
+          result.add(list);
+          leftIdx++;
+        } else if (sum < 0) {
+          leftIdx++;
+        } else {
+          rightIdx--;
         }
       }
     }
-    return sol;
+    return new ArrayList<>(result);
   }
 
 }
