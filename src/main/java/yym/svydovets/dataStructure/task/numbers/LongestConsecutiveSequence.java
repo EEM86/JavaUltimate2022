@@ -1,14 +1,11 @@
 package yym.svydovets.dataStructure.task.numbers;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class LongestConsequtiveSequence {
+public class LongestConsecutiveSequence {
 
   public static void main(String[] args) {
     var nums = new int[]{0,0,-1};
@@ -39,24 +36,6 @@ public class LongestConsequtiveSequence {
       }
     }
     return longest;
-  }
-
-  static int longestConsecutiveSite(int[] nums) {
-    if (nums.length == 0) return 0;
-    Set<Integer> set = new HashSet<>();
-    int ans = 1;
-    for (int num : nums) set.add(num);
-    for (int num : nums) {
-      if (!set.contains(num - 1)) {
-        int count = 1;
-        while (set.contains(num + 1)) {
-          num++;
-          count++;
-        }
-        ans = Math.max(count, ans);
-      }
-    }
-    return ans;
   }
 
 }
