@@ -4,13 +4,8 @@ import org.apache.commons.lang3.NotImplementedException;
 
 public class BestTimeToBuyAndSellStock {
 
-  public static void main(String[] args) {
-    var prices = new int[] {7,6,4,3,1};
-    System.out.println(maxProfit(prices));
-
-  }
-
   /*
+  Easy
   You are given an array prices where prices[i] is the price of a given stock on the ith day.
   You want to maximize your profit by choosing a single day to buy one stock and choosing
   a different day in the future to sell that stock.
