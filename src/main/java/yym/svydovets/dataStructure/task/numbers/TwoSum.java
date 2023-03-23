@@ -5,6 +5,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -12,21 +13,8 @@ import java.util.stream.Collectors;
 
 public class TwoSum {
 
-  public static void main(String[] args) {
-//    var nums = new int[]{2,7,11,15};
-//    var target = 9;
-//    System.out.println(Arrays.toString(twoSum(nums, target)));
-
-//    var nums = new int[] {2,7,11,15};
-//    var target = 9;
-//    System.out.println(Arrays.toString(twoSumV2(nums, target)));
-
-    var threeNums = new int[]{-1,0,1,2,-1,-4};
-    threeSum(threeNums).forEach(System.out::println);
-
-  }
-
   /*
+  Easy
   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
   You may assume that each input would have exactly one solution, and you may not use the same element twice.
   You can return the answer in any order.
@@ -42,6 +30,7 @@ public class TwoSum {
   }
 
   /*
+  Medium
   Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order,
   find two numbers such that they add up to a specific target number.
   Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
@@ -62,6 +51,7 @@ public class TwoSum {
 
 
   /*
+  Medium
   Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k,
   and nums[i] + nums[j] + nums[k] == 0.
   Notice that the solution set must not contain duplicate triplets.
