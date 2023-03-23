@@ -1,18 +1,13 @@
 package yym.svydovets.dataStructure.task.numbers;
 
-import org.apache.commons.lang3.NotImplementedException;
-
 import java.util.Arrays;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-public class LongestConsequtiveSequence {
-
-  public static void main(String[] args) {
-    var nums = new int[]{100,4,200,1,3,2};
-    System.out.println(longestConsecutive(nums));
-  }
+public class LongestConsecutiveSequence {
 
   /*
+  Medium
   Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
   You must write an algorithm that runs in O(n) time.
   Example 1:
@@ -22,7 +17,25 @@ public class LongestConsequtiveSequence {
   https://leetcode.com/problems/longest-consecutive-sequence/
    */
   static int longestConsecutive(int[] nums) {
-    throw new NotImplementedException();
+    var set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+    int res = 0;
+
+    for (int i = 0; i < nums.length; i++) {
+      if (!partOfChain(set, nums[i])) {
+        var curNum = nums[i];
+        int maxChain = 1;
+        while (set.contains(curNum + 1)) {
+          maxChain++;
+          curNum++;
+        }
+        res = Math.max(res, maxChain);
+      }
+    }
+    return res;
+  }
+
+  private static boolean partOfChain(Set<Integer> set, int num) {
+    return set.contains(num - 1);
   }
 
 }
