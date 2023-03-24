@@ -1,6 +1,7 @@
 package yym.svydovets.dataStructure.task;
 
 import org.junit.jupiter.api.Test;
+import yym.svydovets.algorythm.task.SortTask;
 
 import java.util.ArrayList;
 import java.util.Arrays;
