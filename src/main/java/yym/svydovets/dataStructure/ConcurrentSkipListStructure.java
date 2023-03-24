@@ -8,7 +8,7 @@ public class ConcurrentSkipListStructure {
     // treeMap for concurrency, 50% chance the upper level creates duplicates
     // search starts from the top and decrease the levels to the bottom ~ O (log n)
     // 2                               [ 3 ]
-    // 1             [ 1 ]    [ 2 ]    [ 3 ]
+    // 1             [ 1 ]             [ 3 ]
     // 0lvl [ 0 ] -> [ 1 ] -> [ 2 ] -> [ 3 ] -> [ 4 ]
     var map = new ConcurrentSkipListMap<String, String>();
     map.put("1", "first");
