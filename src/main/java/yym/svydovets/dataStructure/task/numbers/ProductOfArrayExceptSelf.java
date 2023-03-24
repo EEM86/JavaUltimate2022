@@ -6,11 +6,6 @@ import java.util.Arrays;
 
 public class ProductOfArrayExceptSelf {
 
-  public static void main(String[] args) {
-    var nums = new int[]{1,2,3,4};
-    System.out.println(Arrays.toString(productExceptSelf(nums)));
-  }
-
   /*
   Medium
   Given an integer array nums, return an array answer such that answer[i] is equal to the
