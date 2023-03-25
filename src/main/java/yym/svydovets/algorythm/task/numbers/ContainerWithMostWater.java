@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task.numbers;
+package yym.svydovets.algorythm.task.numbers;
 
 public class ContainerWithMostWater {
 

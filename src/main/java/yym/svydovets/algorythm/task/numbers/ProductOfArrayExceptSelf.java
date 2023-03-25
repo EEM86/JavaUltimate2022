@@ -1,8 +1,6 @@
-package yym.svydovets.dataStructure.task.numbers;
+package yym.svydovets.algorythm.task.numbers;
 
 import java.util.Arrays;
-import java.util.function.Function;
-import java.util.stream.IntStream;
 
 public class ProductOfArrayExceptSelf {
 

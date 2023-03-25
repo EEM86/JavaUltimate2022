@@ -1,14 +1,11 @@
-package yym.svydovets.dataStructure.task.strings;
+package yym.svydovets.algorythm.task.strings;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Anagram {
@@ -38,6 +35,26 @@ public class Anagram {
     if (s.length() != t.length()) return false;
     for (int i = 0; i < s.length(); i++) {
       if (!t.contains(String.valueOf(s.charAt(i)))) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  static boolean isAnagramWithoutStringMethod(String s, String t) {
+    if (s.length() == 0 || t.length() == 0) return false;
+    if (s.length() != t.length()) return false;
+
+    int[] letters = new int[26];
+    for (var ch : s.toCharArray()) {
+      letters[ch - 'a']++;
+    }
+    for (var ch : t.toCharArray()) {
+      letters[ch - 'a']--;
+    }
+
+    for (var el : letters) {
+      if (el != 0) {
         return false;
       }
     }

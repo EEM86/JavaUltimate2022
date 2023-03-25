@@ -1,6 +1,4 @@
-package yym.svydovets.dataStructure.task.numbers;
-
-import java.util.Arrays;
+package yym.svydovets.algorythm.task.numbers;
 
 public class TrappingRainWater {
 

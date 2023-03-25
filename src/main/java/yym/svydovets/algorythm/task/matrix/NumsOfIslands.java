@@ -1,9 +1,4 @@
-package yym.svydovets.dataStructure.task.matrix;
-
-import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.Queue;
-import java.util.Set;
+package yym.svydovets.algorythm.task.matrix;
 
 public class NumsOfIslands {
 

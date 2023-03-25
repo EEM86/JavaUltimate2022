@@ -1,12 +1,8 @@
-package yym.svydovets.dataStructure.task.numbers;
+package yym.svydovets.algorythm.task.numbers;
 
-import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 
 import static java.time.LocalDateTime.now;
 

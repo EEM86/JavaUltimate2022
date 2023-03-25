@@ -1,10 +1,7 @@
-package yym.svydovets.dataStructure.task;
+package yym.svydovets.algorythm.task;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Duplicates {
 

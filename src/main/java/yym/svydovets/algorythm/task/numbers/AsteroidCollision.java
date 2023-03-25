@@ -1,9 +1,7 @@
-package yym.svydovets.dataStructure.task.numbers;
+package yym.svydovets.algorythm.task.numbers;
 
 import java.util.Arrays;
 import java.util.Stack;
-import java.util.function.Function;
-import java.util.function.IntFunction;
 
 public class AsteroidCollision {
 

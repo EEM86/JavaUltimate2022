@@ -1,7 +1,5 @@
-package yym.svydovets.dataStructure.task;
+package yym.svydovets.algorythm.task;
 
-
-import java.util.Arrays;
 
 public class PrintFormattedTableTask {
 

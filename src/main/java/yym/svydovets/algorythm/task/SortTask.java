@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task;
+package yym.svydovets.algorythm.task;
 
 import yym.svydovets.utils.ArrGen;
 

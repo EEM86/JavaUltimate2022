@@ -1,6 +1,5 @@
-package yym.svydovets.dataStructure.task.strings;
+package yym.svydovets.algorythm.task.strings;
 
-import java.util.HashMap;
 import java.util.Stack;
 
 public class ValidParentheses {

@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task;
+package yym.svydovets.algorythm.task;
 
 public class LinkedListTask {
   public static void main(String[] args) {

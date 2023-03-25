@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task.strings;
+package yym.svydovets.algorythm.task.strings;
 
 import java.util.Arrays;
 

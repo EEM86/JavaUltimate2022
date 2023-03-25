@@ -1,4 +1,4 @@
-package yym.svydovets.dataStructure.task.matrix;
+package yym.svydovets.algorythm.task.matrix;
 
 import java.util.HashSet;
 import java.util.Set;
