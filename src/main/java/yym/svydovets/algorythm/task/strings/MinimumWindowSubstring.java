@@ -1,16 +1,8 @@
 package yym.svydovets.algorythm.task.strings;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class MinimumWindowSubstring {
-
-  public static void main(String[] args) {
-    var s = "ADOBECODEBANC";
-    var t = "ABC";
-
-    System.out.println(minWindow(s, t));
-  }
 
   /*
    * Hard
@@ -25,46 +17,7 @@ public class MinimumWindowSubstring {
    * Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
    */
   static String minWindow(String s, String t) {
-    Map<Character, Integer> charToFreqMap = new HashMap<>();
-
-    for (char ch : t.toCharArray()) {
-      charToFreqMap.put(ch, charToFreqMap.getOrDefault(ch, 0) + 1);
-    }
-
-    int matched = 0;
-    int leftPointer = 0, rightPointer = 0;
-    int minWindowLength = Integer.MAX_VALUE;
-    int beginMinWindowIndex = 0;
-
-    while (rightPointer < s.length()) {
-      char curChar = s.charAt(rightPointer);
-      if (charToFreqMap.containsKey(curChar)) {
-        int requiredCharAmount = charToFreqMap.get(curChar) - 1;
-        charToFreqMap.put(curChar, requiredCharAmount);
-        if (requiredCharAmount == 0) {
-          matched++;
-        }
-      }
-
-      while (matched == charToFreqMap.size()) {
-        int curWindowSize = rightPointer - leftPointer + 1;
-        if (curWindowSize < minWindowLength) {
-          minWindowLength = curWindowSize;
-          beginMinWindowIndex = leftPointer;
-        }
-        char charToSlide = s.charAt(leftPointer);
-        if (charToFreqMap.containsKey(charToSlide)) {
-          if (charToFreqMap.get(charToSlide) == 0) {
-            matched--;
-          }
-          charToFreqMap.put(charToSlide, charToFreqMap.get(charToSlide) + 1);
-        }
-        leftPointer++;
-      }
-
-      rightPointer++;
-    }
-    return minWindowLength > s.length() ? "" : s.substring(beginMinWindowIndex, beginMinWindowIndex + minWindowLength);
+    throw new NotImplementedException();
   }
 
 }
