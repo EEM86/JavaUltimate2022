@@ -20,62 +20,48 @@ public class StringPermutation {
   https://leetcode.com/problems/permutation-in-string/
    */
   static boolean checkInclusion(String s1, String s2) {
-    if (s1.length() > s2.length()) return false;
+    if (s2.length() < s1.length()) return false;
+    int[] s2Count = new int[26];
+    int[] s1Count = new int[26];
+    int windowSize = s1.length();
 
-    var arr = new int[26];
-
-    // fill the array for the s1: [1, 1, 0, 0, 0, ... , 0]
-    for (int i = 0; i < s1.length(); i++) {
-      arr[s1.charAt(i) - 'a']++;
+    for (int i = 0; i < windowSize; i++) {
+      s1Count[s1.charAt(i) - 'a']++;
+      s2Count[s2.charAt(i) - 'a']++;
     }
 
-    int i = 0;
-    int j = 0;
-    //point j to it's position
-    for (; j < s1.length(); j++) {
-      arr[s2.charAt(j) - 'a']--;
-    }
-    j--;
-    if (isEmpty(arr)) return true;
-    while (j < s2.length()) {
-      arr[s2.charAt(i) - 'a']++;
-      i++;
-      j++;
-      if (j < s2.length()) arr[s2.charAt(j) - 'a']--;
-      if (isEmpty(arr)) return true;
-    }
-    return isEmpty(arr);
-  }
-
-  private static boolean isEmpty(int[] arr) {
-    return Arrays.stream(arr).noneMatch(i -> i != 0);
-  }
-
-  static boolean checkInclusionOptimal(String s1, String s2) {
-    if (s1.length() > s2.length()) return false;
-
-    int[] s1map = new int[26];
-    int[] s2map = new int[26];
-
-    for (int i = 0; i < s1.length(); i++) {
-      s1map[s1.charAt(i) - 'a']++;
-      s2map[s2.charAt(i) - 'a']++;
-    }
-
-    for (int i = 0; i < s2.length() - s1.length(); i++) {
-      if (matches(s1map, s2map)) return true;
-      s2map[s2.charAt(i + s1.length()) - 'a']++;
-      s2map[s2.charAt(i) - 'a']--;
-    }
-    return matches(s1map, s2map);
-  }
-
-  static boolean matches(int[] s1map, int[] s2map) {
+    int matches = 0;
     for (int i = 0; i < 26; i++) {
-      if (s1map[i] != s2map[i])
-        return false;
+      if (s2Count[i] == s1Count[i]) {
+        matches++;
+      }
     }
-    return true;
+
+    int l = 0, r = windowSize;
+
+    while (r < s2.length()) {
+      if (matches == 26) return true;
+      var leftChar = s2.charAt(l);
+      var rightChar = s2.charAt(r);
+      var index = rightChar - 'a';
+      s2Count[index]++;
+      if (s1Count[index] == s2Count[index]) {
+        matches++;
+      } else  {
+        matches--;
+      }
+
+      index = leftChar - 'a';
+      s2Count[index]--;
+      if (s1Count[index] == s2Count[index]) {
+        matches++;
+      } else {
+        matches--;
+      }
+      l++;
+      r++;
+    }
+    return matches == 26;
   }
 
 }
