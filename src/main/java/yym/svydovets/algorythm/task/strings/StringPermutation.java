@@ -6,11 +6,6 @@ import java.util.Arrays;
 
 public class StringPermutation {
 
-  public static void main(String[] args) {
-    String s1 = "ab", s2 = "eidbaooo";
-    System.out.println(checkInclusion(s1, s2));
-  }
-
   /*
   Medium
   Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
