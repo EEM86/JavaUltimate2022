@@ -27,4 +27,24 @@ class LongestStringWithoutRepeatingCharsTest {
     assertEquals(expected, actual);
   }
 
+  @Test
+  void testLengthOfLongestSubstring_v3() {
+    String input = "pwwkew";
+    int expected = 3;
+
+    int actual = lengthOfLongestSubstring(input);
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void testLengthOfLongestSubstring_v4() {
+    String input = "bbbbb";
+    int expected = 1;
+
+    int actual = lengthOfLongestSubstring(input);
+
+    assertEquals(expected, actual);
+  }
+
 }
