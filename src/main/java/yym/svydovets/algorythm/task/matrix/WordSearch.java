@@ -1,4 +1,4 @@
-package yym.svydovets.algorythm.task.strings;
+package yym.svydovets.algorythm.task.matrix;
 
 public class WordSearch {
 
