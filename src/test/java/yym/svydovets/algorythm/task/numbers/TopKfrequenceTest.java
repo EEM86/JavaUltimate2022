@@ -1,6 +1,7 @@
-package yym.svydovets.algorythm.task;
+package yym.svydovets.algorythm.task.numbers;
 
 import org.junit.jupiter.api.Test;
+import yym.svydovets.algorythm.task.numbers.TopKfrequence;
 
 import static org.junit.jupiter.api.Assertions.*;
 
