@@ -1,8 +1,6 @@
 package yym.svydovets.algorythm.task.numbers;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class LongestConsecutiveSequence {
 
@@ -17,25 +15,8 @@ public class LongestConsecutiveSequence {
   https://leetcode.com/problems/longest-consecutive-sequence/
    */
   static int longestConsecutive(int[] nums) {
-    var set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
-    int res = 0;
-
-    for (int i = 0; i < nums.length; i++) {
-      if (!partOfChain(set, nums[i])) {
-        var curNum = nums[i];
-        int maxChain = 1;
-        while (set.contains(curNum + 1)) {
-          maxChain++;
-          curNum++;
-        }
-        res = Math.max(res, maxChain);
-      }
-    }
-    return res;
+    throw new NotImplementedException();
   }
 
-  private static boolean partOfChain(Set<Integer> set, int num) {
-    return set.contains(num - 1);
-  }
 
 }
