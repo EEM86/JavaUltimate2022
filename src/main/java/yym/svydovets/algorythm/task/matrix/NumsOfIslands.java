@@ -9,9 +9,6 @@ import org.apache.commons.lang3.NotImplementedException;
 
 public class NumsOfIslands {
 
-  public static void main(String[] args) {
-
-  }
   /*
   Medium
   Given an m x n 2D binary grid which represents a map of
