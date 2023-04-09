@@ -51,4 +51,15 @@ class SearchInRotatedArrayTest {
     assertEquals(actual, expected);
   }
 
+  @Test
+  void testSearchInRotatedArr_v5() {
+    var input = new int[]{1,3};
+    var target = 3;
+    var expected = 1;
+
+    var actual = search(input, target);
+
+    assertEquals(actual, expected);
+  }
+
 }

@@ -27,4 +27,14 @@ class TrappingRainWaterTest {
     assertEquals(expected, actual);
   }
 
+  @Test
+  void testTrappingRainWater_v3() {
+    int[] input = new int[]{0,1,0,0};
+    int expected = 0;
+
+    int actual = TrappingRainWater.trap(input);
+
+    assertEquals(expected, actual);
+  }
+
 }
