@@ -23,6 +23,7 @@ public class MinInRotatedArray {
   Input: nums = [3,4,5,1,2]
   Output: 1
   Explanation: The original array was [1,2,3,4,5] rotated 3 times.
+  https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
    */
   public static int findMin(int[] nums) {
     throw new NotImplementedException();
