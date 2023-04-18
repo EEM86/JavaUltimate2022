@@ -51,7 +51,7 @@ public class InvertBinaryTree {
    * Example, Input: root = [3,4,5,1,2], subRoot = [4,1,2]. Output: true
    * https://leetcode.com/problems/subtree-of-another-tree/description/
    */
-  public static boolean isSubtree(TreeNode<Integer> root, TreeNode<Integer> subRoot) {
+  public static boolean isSubTree(TreeNode<Integer> root, TreeNode<Integer> subRoot) {
     throw new NotImplementedException();
   }
 }

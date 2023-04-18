@@ -9,7 +9,7 @@ import yym.svydovets.utils.TreeNode;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class InvertBinaryTreeTest {
 
   @Test
@@ -102,13 +102,13 @@ class InvertBinaryTreeTest {
     var first = BinaryTree.of(4,3,5,1,2).root;
     var second = BinaryTree.of(3,1,2).root;
 
-    var actual = InvertBinaryTree.isSubtree(first, second);
+    var actual = InvertBinaryTree.isSubTree(first, second);
 
     assertTrue(actual);
   }
 
   @Test
-  @Order(8)
+  @Order(9)
   /*    root
    *     4      subRoot
    *    3  5       3
@@ -119,7 +119,7 @@ class InvertBinaryTreeTest {
     var first = BinaryTree.of(4,3,5,1,2,0).root;
     var second = BinaryTree.of(3,1,2).root;
 
-    var actual = InvertBinaryTree.isSubtree(first, second);
+    var actual = InvertBinaryTree.isSubTree(first, second);
 
     assertFalse(actual);
   }
