@@ -10,6 +10,7 @@ import yym.svydovets.utils.TreeNode;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static yym.svydovets.algorythm.task.trees.LcaAndTraversalBst.buildTree;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class LcaAndTraversalBstTest {
@@ -84,5 +85,37 @@ class LcaAndTraversalBstTest {
     var actual = LcaAndTraversalBst.levelOrderBfs(tree.root);
 
     assertEquals(expected, actual);
+  }
+
+  @Test
+  @Order(7)
+  void testBuildTree_v1() {
+    int[] preorder = new int[]{3,9,20,15,7};
+    int[] inOrder = new int[]{9,3,15,20,7};
+
+    var root = buildTree(preorder, inOrder);
+
+    assertEquals(3, root.value);
+    assertEquals(9, root.left.value);
+    assertEquals(20, root.right.value);
+    assertEquals(15, root.right.left.value);
+    assertEquals(7, root.right.right.value);
+  }
+
+  @Test
+  @Order(8)
+  void testBuildTree_v2() {
+    int[] preorder = new int[]{8,2,7,1,9,3,6};
+    int[] inOrder = new int[]{7,2,1,8,3,9,6};
+
+    var root = buildTree(preorder, inOrder);
+
+    assertEquals(8, root.value);
+    assertEquals(2, root.left.value);
+    assertEquals(7, root.left.left.value);
+    assertEquals(1, root.left.right.value);
+    assertEquals(9, root.right.value);
+    assertEquals(3, root.right.left.value);
+    assertEquals(6, root.right.right.value);
   }
 }
