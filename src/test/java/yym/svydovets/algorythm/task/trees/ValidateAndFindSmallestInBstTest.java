@@ -85,6 +85,18 @@ class ValidateAndFindSmallestInBstTest {
 
   @Test
   @Order(7)
+  void testIsValid_v7() {
+    var root = new TreeNode<>(2);
+    root.left = new TreeNode<>(2);
+    root.right = new TreeNode<>(2);
+
+    var actual = isValidInOrderTraversal(root);
+
+    assertFalse(actual);
+  }
+
+  @Test
+  @Order(8)
   void testKthSmallest_v1() {
     var root = BinaryTree.of(3,1,4,2).root;
     var k = 1;
@@ -96,7 +108,7 @@ class ValidateAndFindSmallestInBstTest {
   }
 
   @Test
-  @Order(8)
+  @Order(9)
   void testKthSmallest_v2() {
     var root = new TreeNode<>(5);
     root.left = new TreeNode<>(3);
