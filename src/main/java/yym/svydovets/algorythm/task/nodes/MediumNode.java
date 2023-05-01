@@ -59,4 +59,31 @@ public class MediumNode {
 
     return slow;
   }
+
+  /*
+   * Medium
+   * Given the head of a linked list, remove the nth node
+   * from the end of the list and return its head.
+   *
+   * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+   */
+  public static Node<Integer> removeNthFromEnd(Node<Integer> head, int n) {
+    var initNode = new Node<>(0);
+    var first = initNode;
+    var second = initNode;
+    initNode.next = head;
+
+    for (int i = 0; i <= n; i++) {
+      first = first.next;
+    }
+
+    while (first != null) {
+      first = first.next;
+      second = second.next;
+    }
+
+    second.next = second.next.next;
+    return initNode.next;
+  }
+
 }
