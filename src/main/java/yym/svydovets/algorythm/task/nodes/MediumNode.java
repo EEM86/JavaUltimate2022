@@ -2,6 +2,12 @@ package yym.svydovets.algorythm.task.nodes;
 
 import yym.svydovets.utils.Node;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+
+import static java.util.Comparator.comparingInt;
+
 public class MediumNode {
 
   /*
@@ -84,6 +90,39 @@ public class MediumNode {
 
     second.next = second.next.next;
     return initNode.next;
+  }
+
+  /*
+   * Hard
+   * You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+   * Merge all the linked-lists into one sorted linked-list and return it.
+   *
+   * Example:
+   * Input: lists = [[1,4,5],[1,3,4],[2,6]]
+   * Output: [1,1,2,3,4,4,5,6]
+   *
+   * https://leetcode.com/problems/merge-k-sorted-lists/
+   */
+  public static Node<Integer> mergeKLists(List<Node<Integer>> lists) {
+    if (lists == null || lists.size() == 0) return null;
+
+    var heap = new PriorityQueue<Integer>();
+
+    for (var node : lists) {
+      while (node != null) {
+        heap.offer(node.value);
+        node = node.next;
+      }
+    }
+
+    var head = new Node<Integer>();
+    var headPointer = head;
+
+    while (!heap.isEmpty()) {
+      head.next = new Node<>(heap.poll());
+      head = head.next;
+    }
+    return headPointer.next;
   }
 
 }
