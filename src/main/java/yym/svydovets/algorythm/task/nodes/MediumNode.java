@@ -3,6 +3,8 @@ package yym.svydovets.algorythm.task.nodes;
 import org.apache.commons.lang3.NotImplementedException;
 import yym.svydovets.utils.Node;
 
+import java.util.List;
+
 public class MediumNode {
 
   /*
@@ -29,6 +31,21 @@ public class MediumNode {
    * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
    */
   public static Node<Integer> removeNthFromEnd(Node<Integer> head, int n) {
+    throw new NotImplementedException();
+  }
+
+  /*
+   * Hard
+   * You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+   * Merge all the linked-lists into one sorted linked-list and return it.
+   *
+   * Example:
+   * Input: lists = [[1,4,5],[1,3,4],[2,6]]
+   * Output: [1,1,2,3,4,4,5,6]
+   *
+   * https://leetcode.com/problems/merge-k-sorted-lists/
+   */
+  public static Node<Integer> mergeKLists(List<Node<Integer>> lists) {
     throw new NotImplementedException();
   }
 
