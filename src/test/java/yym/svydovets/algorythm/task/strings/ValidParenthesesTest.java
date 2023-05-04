@@ -34,4 +34,22 @@ class ValidParenthesesTest {
     assertFalse(isValid);
   }
 
+  @Test
+  void testIsValid_v4() {
+    String input = "{[]}";
+
+    var isValid = ValidParentheses.isValid(input);
+
+    assertTrue(isValid);
+  }
+
+  @Test
+  void testIsValid_v5() {
+    String input = "({[)";
+
+    var isValid = ValidParentheses.isValid(input);
+
+    assertFalse(isValid);
+  }
+
 }

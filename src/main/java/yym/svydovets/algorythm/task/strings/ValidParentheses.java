@@ -17,6 +17,7 @@ public class ValidParentheses {
   * Open brackets must be closed in the correct order.
   * Every close bracket has a corresponding open bracket of the same type.
 
+  * https://leetcode.com/problems/valid-parentheses/
    */
   static boolean isValid(String s) {
     throw new NotImplementedException();
