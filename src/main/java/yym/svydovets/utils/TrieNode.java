@@ -31,4 +31,7 @@ public class TrieNode {
     return isEnd;
   }
 
+  public TrieNode[] getLinks() {
+    return links;
+  }
 }
