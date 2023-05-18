@@ -41,4 +41,16 @@ class MinimumWindowSubstringTest {
     assertTrue(actual.isEmpty());
   }
 
+  @Test
+  void testMinWindow_v4() {
+    var input = "aa";
+    var substr = "aa";
+
+    var expected = "aa";
+
+    var actual = minWindow(input, substr);
+
+    assertEquals(expected, actual);
+  }
+
 }
