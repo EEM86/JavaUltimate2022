@@ -17,4 +17,4 @@ jobs:
       - name: Close Pull
         run: gh pr close --comment "Auto-closing pull request"
         env:
-          GH_TOKEN: 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
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
