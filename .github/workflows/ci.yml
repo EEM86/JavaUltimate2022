@@ -17,8 +17,10 @@ jobs:
       - name: Install GH CLI
         uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
+      - run: echo ${{ secrets.GITHUB_TOKEN }}
+
       - name: Close Pull
+        run: gh pr close ${{ github.event.pull_request.number }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: gh pr close ${{ github.event.pull_request.number }}
 
