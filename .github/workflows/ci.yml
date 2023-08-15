@@ -20,7 +20,7 @@ jobs:
       - run: echo ${{ secrets.GITHUB_TOKEN }}
 
       - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.number }}
+        run: gh pr close 3
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
