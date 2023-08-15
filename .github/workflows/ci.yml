@@ -17,4 +17,4 @@ jobs:
       - name: Close Pull
         run: gh pr close --comment "Auto-closing pull request"
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.FULL_TOKEN }}
