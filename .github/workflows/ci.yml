@@ -10,18 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     container: node:16
 
-    env:
-      GITHUB_TOKEN: ${{ secrets.TEST }}
-
     steps:
       - name: Branch checkout
         uses: actions/checkout@v3
 
       - name: Install GH CLI
-        uses: dev-hanz-ops/install-gh-cli-action
-        with:
-          gh-cli-version: 2.14.2 # optional, see action.yml for current default
+        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
+
 
       - name: Close Pull
         run: gh pr close --comment "Auto-closing pull request"
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST }}
 
