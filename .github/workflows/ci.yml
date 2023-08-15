@@ -17,9 +17,11 @@ jobs:
       - name: Install GH CLI
         uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
+      - name: Show branch name
+        run: echo ${{ github.event.pull_request.base.ref }}
 
-      - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.title }} --comment "Auto-closing pull request"
-        env:
-          GITHUB_TOKEN: ${{ secrets.TEST }}
+#      - name: Close Pull
+#        run: gh pr close ${{ github.event.pull_request.title }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.TEST }}
 
