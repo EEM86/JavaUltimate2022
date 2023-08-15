@@ -6,6 +6,7 @@ public class TrieNode {
 
   private TrieNode[] links;
   private boolean isEnd;
+  private String word;
 
   public TrieNode() {
     this.links = new TrieNode[DEFAULT_CAPACITY];
@@ -33,5 +34,13 @@ public class TrieNode {
 
   public TrieNode[] getLinks() {
     return links;
+  }
+
+  public String getWord() {
+    return word;
+  }
+
+  public void setWord(String word) {
+    this.word = word;
   }
 }
