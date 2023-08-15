@@ -20,7 +20,7 @@ jobs:
       - run: git config --system --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
 
       - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.number }} -c test_comment -d
+        run: gh pr close ${{ github.event.pull_request.number }} -c "Auto-closed comment" -d
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
