@@ -21,10 +21,9 @@ jobs:
 
       - run: echo ${{ github.ref }}
       - run: echo ${{ github.head_ref  }}
-      - run: echo ${{ github.pull_request_target.number  }}
+      - run: echo ${{ github.pull_request.html_url  }}
       - name: Close Pull
-        run: gh pr close ${{ github.pull_request_target.number }}
-            --comment "Auto-closing PR as verification completed"
+        run: gh pr close ${{ github.pull_request.html_url }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
