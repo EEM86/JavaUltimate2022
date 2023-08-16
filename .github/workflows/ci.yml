@@ -20,14 +20,7 @@ jobs:
       - run: echo ${{ github.event.pull_request.html_url }}
       - run: echo ${{ github.event.repository.name }}
 
-      - name: Set output
-        id: vars
-        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-
-      - name: Check output
-        run: echo ${{ steps.vars.outputs.short_ref }}
-
-      - run: echo "${{ github.event.base_ref }}"
+      - run: echo "${{ github.head_ref }}"
       - run: echo "${{ github.ref_name }}"
 
 #      - run: git config --system --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
