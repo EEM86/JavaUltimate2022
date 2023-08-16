@@ -1,0 +1,27 @@
+name: 'CI actions'
+
+on:
+  pull_request:
+    branches:
+      - gh-action
+
+jobs:
+  challenge_check:
+    runs-on: ubuntu-latest
+    container: node
+
+    steps:
+      - name: Branch checkout
+        uses: actions/checkout@v3
+
+      - name: Install GH CLI
+        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
+
+      - run: git config --system --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
+
+      - name: Close Pull
+        run: gh pr close ${{ github.event.pull_request.number }}
+            --comment "Auto-closing PR as verification completed"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
