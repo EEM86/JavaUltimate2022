@@ -28,6 +28,7 @@ jobs:
         run: echo ${{ steps.vars.outputs.short_ref }}
 
       - run: echo "${{ github.event.base_ref }}"
+      - run: echo "${{ github.ref_name }}"
 
 #      - run: git config --system --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
 #
