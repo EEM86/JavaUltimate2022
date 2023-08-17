@@ -19,6 +19,8 @@ jobs:
 
       - run: git config --system --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
 
+      - run: echo ${{ github.pull_request_target }}
+      - run: echo ${{ repository.owner }}
       - run: echo ${{ github.ref }}
       - run: echo ${{ github.head_ref  }}
       - run: echo ${{ github.pull_request.html_url  }}
