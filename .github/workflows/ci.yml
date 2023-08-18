@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: PR No from
         run: echo ${{ github.event.pull_request.number }}
 
@@ -29,4 +28,3 @@ jobs:
         run: gh pr close ${{ github.event.pull_request.number }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
