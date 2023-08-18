@@ -9,31 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install GH CLI
-        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
-
-      - name: Checkout to base branch
-        uses: actions/checkout@v3
-        with:
-          ref: gh-actions
-
-      - name: PR No from base
+      - name: PR No from
         run: echo ${{ github.event.pull_request.number }}
 
-      - name: Base github.ref
+      - name: github.ref
         run: echo ${{ github.ref }}
         
-      - name: Base head_ref
+      - name: head_ref
         run: echo ${{ github.head_ref  }}
 
-      - name: Base Print PR html
+      - name: Print PR html
         run: echo ${{ github.event.pull_request.html_url  }}
         
-      - name: Base Print PR number
+      - name: Print PR number
         run: echo ${{ github.event.pull_request.number  }}
-
-      - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.number }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
