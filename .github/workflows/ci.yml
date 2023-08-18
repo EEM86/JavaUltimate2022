@@ -19,6 +19,7 @@ jobs:
         with:
           ref: gh-action
 
+      - run: git config --global --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
       - run: echo ${{ github.event.pull_request_target }}
 
       - run: echo run ${{ github.event.repository.name }}
