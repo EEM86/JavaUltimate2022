@@ -17,7 +17,6 @@ jobs:
       - name: Checkout to base branch
         uses: actions/checkout@v3
         with:
-          repository: EEM86/JavaUltimate2022
           ref: gh-actions
 
       - run: echo ${{ github.event.pull_request_target }}
