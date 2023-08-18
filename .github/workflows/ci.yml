@@ -20,6 +20,9 @@ jobs:
         with:
           ref: gh-action
 
+      - name:
+        run: echo "I'm from the fork"
+
       - run: git config --global --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
       - run: echo ${{ github.event.pull_request_target }}
 
@@ -38,5 +41,5 @@ jobs:
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_TOKEN: ${{ secrets.MY_TOKEN }}
 
