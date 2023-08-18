@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install GH CLI
-        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
-
-
+      # - name: Install GH CLI
+      #   uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
       - name: PR No from base
         run: echo ${{ github.event.pull_request.number }}
@@ -31,8 +29,6 @@ jobs:
 
       - name: Checkout to base branch
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
           
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }} --delete-branch
