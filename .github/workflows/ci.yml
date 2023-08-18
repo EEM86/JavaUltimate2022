@@ -15,12 +15,12 @@ jobs:
       # - name: Install GH CLI
       #   uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
-      - run:  type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+      - run:  sh "type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
               curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
               && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
               && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
               && sudo apt update \
-              && sudo apt install gh -y
+              && sudo apt install gh -y"
 
       - name: Checkout to base branch
         uses: actions/checkout@v3
