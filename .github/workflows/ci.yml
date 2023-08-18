@@ -11,18 +11,23 @@ jobs:
     container: node
 
     steps:
-      - name: Branch checkout
-        uses: actions/checkout@v3
-
       - name: Install GH CLI
         uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
-      - run: git config --system --add safe.directory /__w/JavaUltimate2022/JavaUltimate2022
+      - name: Checkout to base branch
+        uses: actions/checkout@v3
+        with:
+          repository: EEM86/JavaUltimate2022
+          ref: gh-actions
 
       - run: echo ${{ github.event.pull_request_target }}
 
       - run: echo ${{ github.ref }}
       - run: echo ${{ github.head_ref  }}
+
+      - name: Print PR html
+        run: echo ${{ github.event.pull_request.html_url  }}
+        
       - run: echo ${{ github.event.pull_request.number  }}
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }}
