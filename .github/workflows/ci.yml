@@ -5,13 +5,10 @@ on:
     types: opened
 
 jobs:
-  PR_TARGET:
+  check_challenge:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install GH CLI
-        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
-
       - run: echo ${{ github.event.pull_request.number }}
 
       - run: echo run ${{ github.event.repository.name }}
@@ -24,8 +21,4 @@ jobs:
       - name: Print PR number
         run: echo ${{ github.event.pull_request.number  }}
 
-      - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.number }}
-        env:
-          MY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
