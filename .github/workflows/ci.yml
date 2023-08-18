@@ -15,7 +15,7 @@ jobs:
       - name: Checkout to base branch
         uses: actions/checkout@v3
         with:
-          ref: gh-actions
+          ref: gh-action
 
       - name: PR No from base
         run: echo ${{ github.event.pull_request.number }}
