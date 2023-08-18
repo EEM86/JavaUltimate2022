@@ -41,6 +41,6 @@ jobs:
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }}
         env:
-          MY_TOKEN: ${{ secrets.MY_TOKEN }}
+          MY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
