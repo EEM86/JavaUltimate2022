@@ -11,7 +11,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_token }}
 
     steps:
-      - name: PR No
+      - name: Pr Number
         run: echo ${{ github.event.pull_request.number }}
 
       - name: github.ref
