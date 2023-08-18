@@ -12,8 +12,8 @@ jobs:
     container: node
 
     steps:
-      - name: Install GH CLI
-        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
+      # - name: Install GH CLI
+      #   uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
       - name: Checkout to base branch
         uses: actions/checkout@v3
