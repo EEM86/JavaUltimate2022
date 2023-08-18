@@ -18,7 +18,6 @@ jobs:
       - name: Checkout to base branch
         uses: actions/checkout@v3
         with:
-          github-token: ${{ secrets.MY_TOKEN }}
           ref: gh-action
 
       - name: PRINT FORK
@@ -41,6 +40,8 @@ jobs:
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }}
         env:
-          MY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_TOKEN: ${{ secrets.MY_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
         
 
