@@ -33,7 +33,7 @@ jobs:
         run: echo ${{ github.event.pull_request.number  }}
 
       - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.number }}
+        run: gh pr close ${{ github.event.pull_request.number }} --delete-branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
