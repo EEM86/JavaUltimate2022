@@ -38,9 +38,16 @@ jobs:
         run: echo ${{ github.event.pull_request.number  }}
 
       - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.number }}
+        run: gh api \
+              --method PATCH \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              /repos/EEM86/JavaUltimate2022/pulls/ ${{ github.event.pull_request.number }} \
+              -f title='new title' \
+             -f body='updated body' \
+             -f state='closed' \
+             -f base='gh-action' 
         env:
-          MY_TOKEN: ${{ secrets.MY_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
         
