@@ -12,15 +12,8 @@ jobs:
     container: node
 
     steps:
-      # - name: Install GH CLI
-      #   uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
-
-      - run:  sh "type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
-              curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-              && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-              && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-              && sudo apt update \
-              && sudo apt install gh -y"
+      - name: Install GH CLI
+        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
       - name: Checkout to base branch
         uses: actions/checkout@v3
@@ -47,5 +40,7 @@ jobs:
 
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }}
+        env:
+          MY_TOKEN: ${{ secrets.MY_TOKEN }}
         
 
