@@ -22,13 +22,18 @@ jobs:
 
       - run: echo ${{ github.event.pull_request_target }}
 
+      - run: echo run ${{ github.event.repository.name }}
       - run: echo ${{ github.ref }}
       - run: echo ${{ github.head_ref  }}
+
 
       - name: Print PR html
         run: echo ${{ github.event.pull_request.html_url  }}
         
       - run: echo ${{ github.event.pull_request.number  }}
+
+      - run: echo ${{ github.event.pull_request.html_url  }}
+
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }}
         env:
