@@ -12,16 +12,19 @@ jobs:
       - name: Install GH CLI
         uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
 
-      - run: echo ${{ github.event.pull_request.number }}
+      - name: PR No from base:
+        run: echo ${{ github.event.pull_request.number }}
 
-      - run: echo run ${{ github.event.repository.name }}
-      - run: echo ${{ github.ref }}
-      - run: echo ${{ github.head_ref  }}
+      - name: Base: github.ref
+        run: echo ${{ github.ref }}
+        
+      - name: Base: head_ref
+        run: echo ${{ github.head_ref  }}
 
-      - name: Print PR html
+      - name: Base: Print PR html
         run: echo ${{ github.event.pull_request.html_url  }}
         
-      - name: Print PR number
+      - name: Base: Print PR number
         run: echo ${{ github.event.pull_request.number  }}
 
       - name: Close Pull
