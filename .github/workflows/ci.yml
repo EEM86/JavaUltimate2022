@@ -10,7 +10,10 @@ jobs:
 
     steps:
       - name: Print ref base branch
-        run: echo ${{ github.ref }}
+        run: echo ${{ github.event.pull_request.github_ref }}
+
+      - name: Print base last commit sha
+        run: echo ${{ github.event.pull_request.github_sha }}
 
       - name: Print ref to merge branch
         run: echo ${{ github.event.number }}
@@ -23,7 +26,10 @@ jobs:
       - name: PR No
         run: echo ${{ github.event.pull_request.number }}
 
-      - name: Head_ref
+      - name: PR Head_ref
+        run: echo ${{ github.event.pull_request.head_ref  }}
+
+      - name: PR Head_ref
         run: echo ${{ github.head_ref  }}
 
       - name: Read file contents
@@ -49,8 +55,13 @@ jobs:
       - name: Print PR html
         run: echo ${{ github.event.pull_request.html_url  }}
         
-      - name: Print PR number
-        run: echo ${{ github.event.pull_request.number  }}
+      - name: Print PR head sha
+        run: echo ${{ github.event.pull_request.head.sha  }}
+
+      - name: Checkout to branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.github_sha }}
 
       - name: Close Pull
         run: gh pr close ${{ github.event.pull_request.number }}
