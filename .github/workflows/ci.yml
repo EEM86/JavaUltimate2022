@@ -5,7 +5,7 @@ on:
     types: [opened, edited]
 
 jobs:
-  print-hello:
+  PRINT_HELLO:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +21,36 @@ jobs:
       - name: Head_ref
         run: echo ${{ github.head_ref  }}
 
-      - name: Base Print PR html
+      - name: Read file contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "test.txt"
+
+      - name: File contents
+        run: echo ${{ steps.read_file.outputs.contents }}
+
+  CLOSE_PR:
+    needs: PRINT_HELLO
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install GH CLI
+        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
+
+      - name: Print github.ref
+        run: echo ${{ github.ref }}
+      - name: Print head_ref
+        run: echo ${{ github.head_ref  }}
+
+
+      - name: Print PR html
         run: echo ${{ github.event.pull_request.html_url  }}
         
-      - name: Print Hello
-        run: echo "HELLO!"
+      - name: Print PR number
+        run: echo ${{ github.event.pull_request.number  }}
+
+      - name: Close Pull
+        run: gh pr close ${{ github.event.pull_request.number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
