@@ -1,3 +1,3 @@
 public key: yy-final-test
-contract Id: CBKY7UN5VGD4LIQFOBOTSUSQWK67BZZTA23NIEVWSWRR5SAT26JQN2B
+contract Id: CBKY7UN5VGD4LIQFOBOTSUSQWK67BZZTA23NIEVWSWRR5SAT26JQN2B6
 production: https://soroban-example-dapp-rho.vercel.app
