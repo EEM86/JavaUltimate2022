@@ -1,7 +1,7 @@
 name: 'CI actions'
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, edited]
 
 jobs:
@@ -9,15 +9,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Print ref base branch
+        run: echo ${{ github.ref }}
+
+      - name: Print ref to merge branch
+        run: echo ${{ github.event.number }}
+        
       - name: Checkout to branch
         uses: actions/checkout@v3
+        with:
+          ref: "refs/pull/${{ github.event.number }}/merge"
 
       - name: PR No
         run: echo ${{ github.event.pull_request.number }}
 
-      - name: Github_ref refs/pull/:prNumber/merge
-        run: echo ${{ github.ref }}
-        
       - name: Head_ref
         run: echo ${{ github.head_ref  }}
 
@@ -26,9 +31,6 @@ jobs:
         uses: andstor/file-reader-action@v1
         with:
           path: "test.txt"
-
-      - name: File contents
-        run: echo ${{ steps.read_file.outputs.contents }}
 
   CLOSE_PR:
     needs: PRINT_HELLO
