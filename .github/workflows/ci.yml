@@ -1,32 +1,28 @@
 name: 'CI actions'
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, edited]
-    branches:
-      - gh-action
 
 jobs:
-  CLOSE_PR:
+  print-hello:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install GH CLI
-        uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
+      - name: Checkout to branch
+        uses: actions/checkout@v3
 
-      - name: Print github.ref
+      - name: PR No
+        run: echo ${{ github.event.pull_request.number }}
+
+      - name: Github_ref refs/pull/:prNumber/merge
         run: echo ${{ github.ref }}
-      - name: Print head_ref
+        
+      - name: Head_ref
         run: echo ${{ github.head_ref  }}
 
-
-      - name: Print PR html
+      - name: Base Print PR html
         run: echo ${{ github.event.pull_request.html_url  }}
         
-      - name: Print PR number
-        run: echo ${{ github.event.pull_request.number  }}
-
-      - name: Close Pull
-        run: gh pr close ${{ github.event.pull_request.number }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print Hello
+        run: echo "HELLO!"
