@@ -5,7 +5,7 @@ on:
     types: [opened, edited]
 
 jobs:
-  PR_TARGET:
+  challenge-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +25,5 @@ jobs:
         run: echo ${{ github.event.pull_request.html_url  }}
         
       - name: Print Hello
-        run: echo ${{ github.event.pull_request.number  }}
+        run: echo "HELLO!"
 
