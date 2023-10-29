@@ -33,4 +33,24 @@ class CourseScheduleTest {
 
     assertFalse(result);
   }
+
+  @Test
+  void canFinish_v3() {
+    int numCourses = 2;
+    int[][] prerequisites = { {1, 0} };
+
+    final boolean result = service.canFinishDfs(numCourses, prerequisites);
+
+    assertTrue(result);
+  }
+
+  @Test
+  void canFinish_v4() {
+    int numCourses = 2;
+    int[][] prerequisites = { {1, 0}, {0, 1} };
+
+    final boolean result = service.canFinishDfs(numCourses, prerequisites);
+
+    assertFalse(result);
+  }
 }
