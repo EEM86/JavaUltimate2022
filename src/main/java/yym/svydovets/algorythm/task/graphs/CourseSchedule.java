@@ -39,27 +39,28 @@ public class CourseSchedule {
 
     var visitSet = new HashSet<Integer>();
 
-    while (!map.isEmpty()) {
-      if (!dfs(map, visitSet)) {
+    for (int i = 0; i < numCourses; i++) {
+      if (!dfs(map, visitSet, i)) {
         return false;
       }
     }
     return true;
   }
 
-  private boolean dfs(Map<Integer, List<Integer>> map, Set<Integer> set) {
-    for (var key : map.keySet()) {
-      var values = map.get(key);
-      if (set.containsAll(values)) {
-        set.add(key);
-        map.remove(key);
-        return true;
+  private boolean dfs(Map<Integer, List<Integer>> map, Set<Integer> set, int course) {
+    if (set.contains(course)) return false;
+
+    set.add(course);
+    for (var el : map.get(course)) {
+      if (!dfs(map, set, el)) {
+        return false;
       }
     }
-    return false;
+    set.remove(course);
+    return true;
   }
 
-  public boolean canFinishDfs(int numCourses, int[][] prerequisites) {
+  public boolean canFinishBfs(int numCourses, int[][] prerequisites) {
     int[] indegree = new int[numCourses];
     List<List<Integer>> adj = new ArrayList<>(numCourses);
 
