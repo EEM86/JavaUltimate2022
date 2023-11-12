@@ -43,4 +43,14 @@ class NumberOfConnectedTest {
 
     assertEquals(1, res);
   }
+
+  @Test
+  void countComponents_v4() {
+    int input = 8;
+    int[][] edges = {{0,1}, {2,3}, {4,5}, {6,7}, {0,2}, {1,4}, {5,6}};
+
+    var res = service.countComponents(input, edges);
+
+    assertEquals(1, res);
+  }
 }
