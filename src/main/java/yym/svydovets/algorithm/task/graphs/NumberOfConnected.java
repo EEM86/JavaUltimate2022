@@ -3,7 +3,7 @@ package yym.svydovets.algorithm.task.graphs;
 import org.apache.commons.lang3.NotImplementedException;
 
 /*
- * Medium (UnionFind algorythm for the solution)
+ * Medium (UnionFind algorithm for the solution)
  * Complexity: time - O(log n), space - O(n)
  *
  * You have a graph of n nodes. You are given an integer n
@@ -15,7 +15,7 @@ import org.apache.commons.lang3.NotImplementedException;
  * [ 0 ] --- [ 1 ]    [ 3 ]
  *             |        |
  *           [ 2 ]    [ 4 ]
- * Intput: n = 5, edges = [[0,1],[1,2],[3,4]]
+ * Input: n = 5, edges = [[0,1],[1,2],[3,4]]
  * Output: 2
  */
 public class NumberOfConnected {
