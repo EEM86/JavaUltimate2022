@@ -60,4 +60,14 @@ public class HouseRobber {
     return cur;
   }
 
+  public int robV2(int[] nums) {
+    if (nums == null || nums.length == 0) return 0;
+    if (nums.length == 1) return nums[0];
+    int[] first = new int[nums.length - 1];
+    int[] second = new int[nums.length - 1];
+    System.arraycopy(nums, 0, first, 0,  nums.length - 1);
+    System.arraycopy(nums, 1, second, 0,  nums.length - 1);
+    return Math.max(robOptimal(first), robOptimal(second));
+  }
+
 }
