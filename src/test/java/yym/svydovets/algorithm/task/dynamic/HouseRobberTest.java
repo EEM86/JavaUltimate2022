@@ -1,12 +1,17 @@
 package yym.svydovets.algorithm.task.dynamic;
 
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(OrderAnnotation.class)
 class HouseRobberTest {
 
   @Test
+  @Order(1)
   void robMemo() {
     var service = new HouseRobber();
     int[] nums = {1, 2, 3, 1};
@@ -17,6 +22,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(2)
   void robMemo_v2() {
     var service = new HouseRobber();
     int[] nums = {2,7,9,3,1};
@@ -27,6 +33,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(3)
   void robRecurs() {
     var service = new HouseRobber();
     int[] nums = {1, 2, 3, 1};
@@ -37,6 +44,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(4)
   void robRecurs_v2() {
     var service = new HouseRobber();
     int[] nums = {2,7,9,3,1};
@@ -47,6 +55,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(5)
   void robTopDown() {
     var service = new HouseRobber();
     int[] nums = {1, 2, 3, 1};
@@ -57,6 +66,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(6)
   void robTopDown_v2() {
     var service = new HouseRobber();
     int[] nums = {2,7,9,3,1};
@@ -67,6 +77,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(7)
   void robOptimal() {
     var service = new HouseRobber();
     int[] nums = {1, 2, 3, 1};
@@ -77,6 +88,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(8)
   void robOptimal_v2() {
     var service = new HouseRobber();
     int[] nums = {2,7,9,3,1};
@@ -87,6 +99,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(9)
   void robV2_1() {
     var service = new HouseRobber();
     int[] nums = {2, 3, 2};
@@ -97,6 +110,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(10)
   void robV2_2() {
     var service = new HouseRobber();
     int[] nums = {1, 2, 3, 1};
@@ -107,6 +121,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(11)
   void robV2_3() {
     var service = new HouseRobber();
     int[] nums = {1, 2, 3};
@@ -117,6 +132,7 @@ class HouseRobberTest {
   }
 
   @Test
+  @Order(12)
   void robV2_4() {
     var service = new HouseRobber();
     int[] nums = {1};
