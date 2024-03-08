@@ -67,4 +67,31 @@ class IntervalsTaskTest {
 
         assertTrue(result);
     }
+
+    @Test
+    void minimumRoomsRequired_v1() {
+        int[][] intervals = new int[][]{{0,30}, {5, 10}, {15, 20}};
+
+        int result = service.minimumRoomsRequired(intervals);
+
+        assertEquals(2, result);
+    }
+
+    @Test
+    void minimumRoomsRequired_v2() {
+        int[][] intervals = new int[][]{{5, 10}, {15, 20}};
+
+        int result = service.minimumRoomsRequired(intervals);
+
+        assertEquals(1, result);
+    }
+
+    @Test
+    void minimumRoomsRequired_v3() {
+        int[][] intervals = new int[][]{{5, 50}, {20, 40}, {35, 50}};
+
+        int result = service.minimumRoomsRequired(intervals);
+
+        assertEquals(3, result);
+    }
 }
