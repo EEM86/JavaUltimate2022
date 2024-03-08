@@ -1,6 +1,7 @@
 package yym.svydovets.algorithm.task.intervals;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class IntervalsTask {
 
@@ -51,6 +52,44 @@ public class IntervalsTask {
             }
         }
         return true;
+    }
+
+    /*
+     * Medium
+     *
+     * Given an array of meeting time intervals consisting of start and end times
+     * [[s1,e1]], [s2,e2], ...] (si < ei), find the minimum number of conference rooms required.
+     *
+     * Example:
+     * Input: intervals = [(0,30), (5,10), (15,20)]
+     * Output: 2
+     * We need two meeting rooms: room1 = (0,30), room2 = (5,10), (15,20)
+     */
+    public int minimumRoomsRequired(int[][] intervals) {
+        final Integer[] start = Stream.of(intervals)
+            .map(i -> i[0])
+            .sorted()
+            .toArray(Integer[]::new);
+        final Integer[] end = Stream.of(intervals)
+            .map(i -> i[1])
+            .sorted()
+            .toArray(Integer[]::new);
+        int count = 0, res = 0;
+
+        int endPointer = 0, startPointer = 0;
+
+        while (startPointer < intervals.length) {
+            if (start[startPointer] < end[endPointer]) {
+                count++;
+                startPointer++;
+            } else {
+                count--;
+                endPointer++;
+            }
+            res = Math.max(res, count);
+        }
+
+        return res;
     }
 
 }
