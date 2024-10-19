@@ -1,12 +1,6 @@
 package yym.svydovets.algorithm.task.graphs;
 
 import org.apache.commons.lang3.NotImplementedException;
-import yym.svydovets.utils.Tuple;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 public class AlienDictionary {
 
