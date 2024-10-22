@@ -33,9 +33,21 @@ class TopKfrequenceTest {
   @Test
   void testTopFrequency_v3() {
     int[] input = new int[]{1, 2};
-    int k = 1;
+    int k = 2;
 
     int[] expected = new int[]{1, 2};
+
+    int[] actual = TopKfrequence.topKFrequent(input, k);
+
+    assertArrayEquals(expected, actual);
+  }
+
+  @Test
+  void testTopFrequency_v4() {
+    int[] input = new int[]{3, 0, 1, 0};
+    int k = 1;
+
+    int[] expected = new int[]{0};
 
     int[] actual = TopKfrequence.topKFrequent(input, k);
 
