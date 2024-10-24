@@ -62,4 +62,70 @@ public class Vykreslennia {
         }
     }
 
+    public static String numbers(int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1000; i < 100000; i++) {
+            if (hasDublicates(i)) continue;
+            int res = i * n;
+            if (!hasDublicates(res)) {
+                if (from0ToHero(res, i)) {
+                    if (!is5N(res)) {
+                        sb.append('0');
+                    }
+                    sb.append(res).append(" / ");
+
+                    if (!is5N(i)) {
+                        sb.append('0');
+                    }
+                    sb.append(i);
+                    sb.append(String.format(" = %d", n)).append("\n");
+                }
+            }
+        }
+        if (sb.isEmpty()) {
+            return "There are no solutions for " + n;
+        }
+        return sb.toString();
+    }
+
+    public static boolean from0ToHero(int first, int second) {
+        StringBuilder sb = new StringBuilder();
+        if (!is5N(first)) {
+            sb.append('0');
+        }
+        sb.append(first);
+
+        if (!is5N(second)) {
+            sb.append('0');
+        }
+        sb.append(second);
+        String s = sb.toString();
+
+        int[] digits = new int[10];
+
+        for (char ch : s.toCharArray()) {
+            int idx = Integer.parseInt(String.valueOf(ch));
+            digits[idx]++;
+            if (digits[idx] > 1) return false;
+        }
+        return true;
+    }
+
+    public static boolean is5N(int n) {
+        String res = String.valueOf(n);
+        return res.length() == 5;
+    }
+
+    public static boolean hasDublicates(int n) {
+        var set = new HashSet<Integer>();
+        while (n > 0) {
+            int mod = n % 10;
+            if (!set.add(mod)) {
+                return true;
+            }
+            n = n / 10;
+        }
+        return false;
+    }
+
 }
