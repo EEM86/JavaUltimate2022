@@ -3,46 +3,62 @@ package yym.svydovets.algorithm.task.csosvita;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class VykreslenniaTest {
 
     @Test
     void cutOut() {
-        String input = "111111111110011111111";
+        String input = "1111";
 
+        final int result = Vykreslennia.cutOut(input);
+        assertEquals(1, result);
+    }
+
+    @Test
+    void cutOut2() {
+        String input = "0";
+
+        final int result = Vykreslennia.cutOut(input);
+        assertEquals(0, result);
+    }
+
+    @Test
+    void cutOut3() {
+        String input = "123";
+
+        final int result = Vykreslennia.cutOut(input);
+        assertEquals(1, result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1234", "101010", "111111111110011111111"})
+    void cutOut4(String input) {
         final int result = Vykreslennia.cutOut(input);
         assertEquals(4, result);
     }
 
-    @Test
-    void is5th() {
-        int n = 999000;
-        System.out.println(Vykreslennia.is5N(n));
+    @ParameterizedTest
+    @ValueSource(strings = {"12345", "13579", "333222111"})
+    void cutOut5(String input) {
+        final int result = Vykreslennia.cutOut(input);
+        assertEquals(10, result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"123456789", "987654321"})
+    void cutOut6(String input) {
+        final int result = Vykreslennia.cutOut(input);
+        assertEquals(84, result);
     }
 
     @Test
-    void hasDublicates() {
-        int n = 123456789;
-        System.out.println(Vykreslennia.hasDublicates(n));
+    void cutOut7() {
+        String input = "123456789";
+
+        final int result = Vykreslennia.cutOut(input);
+        assertEquals(84, result);
     }
 
-    @Test
-    void numbers() {
-        int n = 61;
-        System.out.println(Vykreslennia.numbers(n));
-    }
-
-
-    @Test
-    void numbers2() {
-        int n = 3;
-        System.out.println(Vykreslennia.numbers(n));
-    }
-
-    @Test
-    void from0ToHero() {
-        int first = 17469;
-        int second = 5823;
-        System.out.println(Vykreslennia.from0ToHero(first, second));
-    }
 }
