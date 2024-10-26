@@ -17,10 +17,31 @@ public class Presents {
         int c = sc.nextInt();
         int d = sc.nextInt();
 
-        System.out.println(presents(new int[]{a, b, c, d}));
+        System.out.println(presents(new int[]{a,b,c,d}));
     }
 
-    static int presents(int[] arr) { // 123 - 6
+    static int presents(int[] arr) {
+        int a = arr[0];
+        int b = arr[1];
+        int c = arr[2];
+        int target = arr[3];
+        var resSet = new HashSet<List<Integer>>();
+
+        int sol = 0;
+
+        int[] presents = new int[]{a,b,c};
+        int[] dp = new int[target+1];
+        dp[0] = 1;
+
+        for (int i = 0; i < presents.length; i++) {
+            for (int j = presents[i]; j <= target; j++) {
+                dp[j] += dp[j - presents[i]];
+            }
+        }
+        return dp[target];
+    }
+
+    static int presentsIncorrect(int[] arr) { // 123 - 6
         var resSet = new HashSet<List<Integer>>();
         int n = arr.length;
         int target = arr[n - 1];
@@ -118,30 +139,5 @@ public class Presents {
                 tempList.remove(tempList.size() - 1);
             }
         }
-    }
-
-    static int presentsV2(int a, int b, int c, int d) {
-        int[] arr = new int[]{a,b,c};
-        Arrays.sort(arr);
-        List<List<List<Integer>>> dp = new ArrayList<>();
-        for (int i = 1; i <= d; i++) {
-            List<List<Integer>> newList = new ArrayList();
-            for (int j = 0; j < arr.length && arr[j] <= i; j++) {
-                if (i == arr[j]) {
-                    newList.add(Arrays.asList(arr[j]));
-                }else {
-                    for (List<Integer> l : dp.get(i-arr[j]-1)) {
-                        if (arr[j] <= l.get(0)) {
-                            List cl = new ArrayList<>();
-                            cl.add(arr[j]); cl.addAll(l);
-                            newList.add(cl);
-                        }
-                    }
-                }
-            }
-            dp.add(newList);
-        }
-        final int size = dp.get(d - 1).size();
-        return size;
     }
 }

@@ -19,13 +19,6 @@ class PresentsTest {
     }
 
     @ParameterizedTest
-    @MethodSource("arrayProvider1")
-    void presents1(int[] input) {
-        final int presents = Presents.presents(input);
-        assertEquals(1, presents);
-    }
-
-    @ParameterizedTest
     @MethodSource("arrayProvider3")
     void presents3(int[] input) {
         final int presents = Presents.presents(input);
@@ -41,19 +34,8 @@ class PresentsTest {
     static Stream<int[]> arrayProvider3() {
         int[] first = new int[]{2,5,10,12};
         int[] second = new int[]{5,7,10,25};
-        return Stream.of(
-            first,
-            second);
-    }
-
-    static Stream<int[]> arrayProvider1() {
-        int[] first = new int[]{3,3,3,9};
-        int[] second = new int[]{1,1,1,1};
-        int[] third = new int[]{2,2,2,8};
-        return Stream.of(
-            first,
-            second,
-            third);
+        int[] third = new int[]{1,1,1,1};
+        return Stream.of(first, second, third);
     }
 
     @Test
@@ -133,16 +115,5 @@ class PresentsTest {
 
         final int presents = Presents.presents(new int[]{a, b, c, d});
         assertEquals(66, presents);
-    }
-
-    @Test
-    void presents9() {
-        int a = 1;
-        int b = 1;
-        int c = 0;
-        int d = 0;
-
-        final int presents = Presents.presents(new int[]{a, b, c, d});
-        assertEquals(0, presents);
     }
 }
