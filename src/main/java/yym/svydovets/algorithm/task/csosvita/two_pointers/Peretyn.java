@@ -40,6 +40,21 @@ public class Peretyn {
         System.out.println(result);
     }
 
+    /*
+     * You have two arrays with colors. The task is to find a pair using two arrays
+     * with a minimum difference in colors. The colors are unique, the arrays filled in
+     * with positive numbers in growing order.
+     * 1 <= N <= 100000
+     * 1 <= M <= 100000
+     *
+     * Example:
+     * Input (length arr1 \n arr1 \n length arr2 \n arr2):
+     * 2
+     * 3 4
+     * 3
+     * 1 2 3
+     * Output: 3 3 (arr1[0], arr2[2])
+     */
     public static String peretyn(int n, int[] a, int m, int[] b) {
         Arrays.sort(a);
         Arrays.sort(b);
