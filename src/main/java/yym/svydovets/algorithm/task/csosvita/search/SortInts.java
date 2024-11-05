@@ -1,30 +1,64 @@
 package yym.svydovets.algorithm.task.csosvita.search;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
+/*
+ * Sorting task.
+ * 1. Quadratic sort. Implement Insertion sort
+ * 2. Auxiliary array sort with merge sort
+ * 3. Non-recursive methods for sorting
+ */
 public class SortInts {
 
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        List<Integer> ints = new ArrayList<>();
-        while (sc.hasNext()) {
-            ints.add(sc.nextInt());
+    /*
+     * Quadratic sort.
+     */
+    public static int[] insertionSort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int j = i;
+            int key = arr[j];
+            while (j > 0 && arr[j-1] > key) {
+                arr[j] = arr[j-1];
+                j--;
+            }
+            arr[j] = key;
         }
-        sortInts(ints.stream().mapToInt(x -> (int) x).toArray());
+        return arr;
     }
 
-    public static void sortInts(int[] arr) {
-//        final int[] res = sort(arr);
-//        final int[] res = insertionSort(arr);
-        final int[] res = auxSort(arr, 0, arr.length);
-        final String result = Arrays.stream(res).mapToObj(String::valueOf).collect(Collectors.joining(" "));
-        System.out.println(result);
+    /*
+     * Merge Sort Implementation
+     */
+    public static int[] mergeSort(int[] a) {
+        int n = a.length;
+        if (n < 2) return a;
+
+        int m = n / 2;
+        int[] left = mergeSort(Arrays.copyOfRange(a, 0, m));
+        int[] right = mergeSort(Arrays.copyOfRange(a, m, n));
+
+        return merge(left, right);
     }
 
+    private static int[] merge(int[] a, int[] b) {
+        int n = a.length;
+        int m = b.length;
+        int[] res = new int[n+m];
+        int l = 0, r = 0;
+
+        while (l < n || r < m) {
+            if (r == m || (l < n) && (a[l] < b[r])) {
+                res[l+r] = a[l++];
+            } else {
+                res[l+r] = b[r++];
+            }
+        }
+        return res;
+    }
+
+    /*
+     * Merge Sort with auxiliary array
+     */
     public static int[] auxSort(int[] a, int l, int r) {
         if (r - l < 2) return a;
 
@@ -52,45 +86,36 @@ public class SortInts {
         return a;
     }
 
-
-    public static int[] insertionSort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            int j = i;
-            int key = arr[j];
-            while (j > 0 && arr[j-1] > key) {
-                arr[j] = arr[j-1];
-                j--;
+    /*
+     * Non-recursive Merge Sort
+     */
+    public static void nonRecursiveSort(int[] a) {
+        int n = a.length;
+        int[] aux = new int[n/2];
+        for (int len = 1; len < n; len *= 2) {
+            for (int lo = 0; lo < n - len; lo += len + len) {
+                int mid = lo + len;
+                int hi = Math.min(mid + len, n);
+                mergeNonRecursive(a, aux, lo, mid, hi);
             }
-            arr[j] = key;
         }
-        return arr;
     }
 
-    public static int[] sort(int[] a) {
-        int n = a.length;
-        if (n < 2) return a;
+    private static void mergeNonRecursive(int[] a, int[] aux, int l, int mid, int r) {
+        int x = 0;
+        for (int i = l; i < mid; i++) {
+            aux[x++] = a[i];
+        }
 
-        int m = n / 2;
-        int[] left = sort(Arrays.copyOfRange(a, 0, m));
-        int[] right = sort(Arrays.copyOfRange(a, m, n));
+        int i = 0, j = mid;
+        int k = l, n = mid - l;
 
-        return merge(left, right);
-    }
-
-    private static int[] merge(int[] a, int[] b) {
-        int n = a.length;
-        int m = b.length;
-        int[] res = new int[n+m];
-        int l = 0, r = 0;
-
-        while (l < n || r < m) {
-            if (r == m || (l < n) && (a[l] < b[r])) {
-                res[l+r] = a[l++];
+        while (i < n || j < r) {
+            if (j == r || (i < n && aux[i] < a[j])) {
+                a[k++] = aux[i++];
             } else {
-                res[l+r] = b[r++];
+                a[k++] = a[j++];
             }
         }
-        return res;
     }
-
 }

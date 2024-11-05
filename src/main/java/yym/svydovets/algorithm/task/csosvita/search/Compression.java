@@ -28,11 +28,12 @@ public class Compression {
     public static String compress(String s) {
         var sb = new StringBuilder();
         int l = 0, r = 0;
-        for (; r < s.length(); r++) {
+        while (r < s.length()) {
             if (s.charAt(r) != s.charAt(l)) {
                 sb.append(s.charAt(l)).append(r-l);
                 l = r;
             }
+            r++;
         }
         sb.append(s.charAt(l)).append(r-l);
 

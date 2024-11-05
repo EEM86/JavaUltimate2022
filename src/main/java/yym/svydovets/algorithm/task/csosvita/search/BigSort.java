@@ -16,33 +16,6 @@ import java.util.stream.IntStream;
 
 public class BigSort {
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
-
-        List<String> unsorted = IntStream.range(0, n).mapToObj(i -> {
-                try {
-                    return bufferedReader.readLine();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            })
-            .collect(toList());
-
-        List<String> result = Result.bigSorting(unsorted);
-
-        bufferedWriter.write(
-            result.stream()
-                .collect(joining("\n"))
-                + "\n"
-        );
-
-        bufferedReader.close();
-        bufferedWriter.close();
-    }
-
     public static class Result {
         /* Consider an array of numeric strings where each string is a positive number
          * with anywhere from to digits. Sort the array's elements in non-decreasing,
@@ -57,8 +30,52 @@ public class BigSort {
          * Sample Output: ["1", "3", "150", "200"]
          */
         public static List<String> bigSorting(List<String> unsorted) {
-            mergeSort(unsorted);
+            String[] aux = new String[unsorted.size() / 2];
+            mergeSortWithAux(unsorted, aux, 0, unsorted.size());
             return unsorted;
+        }
+
+        private static void mergeSortWithAux(List<String> unsorted, String[] aux, int l, int r) {
+            if (r - l <= 1) {
+                return;
+            }
+            int mid = (l + r) / 2;
+            mergeSortWithAux(unsorted, aux, l, mid);
+            mergeSortWithAux(unsorted, aux, mid, r);
+
+            merge(unsorted, aux, l, mid, r);
+        }
+
+        private static void merge(List<String> unsorted, String[] aux, int l, int m, int r) {
+            int x = 0;
+            for (int i = l; i < m; i++) {
+                aux[x++] = unsorted.get(i);
+            }
+
+            int i = 0, n = m - l;
+            int k = l, j = m;
+
+            while (i < n || j < r) {
+                if (j == r || (i < n && less(aux[i], unsorted.get(j)))) {
+                    unsorted.set(k++, aux[i++]);
+                } else {
+                    unsorted.set(k++, unsorted.get(j++));
+                }
+            }
+        }
+
+        private static boolean less(String left, String right) {
+            if (left.length() < right.length()) {
+                return true;
+            } else if (left.length() > right.length()) {
+                return false;
+            }
+            for (int i = 0; i < left.length(); i++) {
+                if (left.charAt(i) != right.charAt(i)) {
+                    return left.charAt(i) < right.charAt(i);
+                }
+            }
+            return false;
         }
 
         private static void mergeSort(List<String> elements) {
@@ -100,20 +117,16 @@ public class BigSort {
         private static boolean isLeftSmaller(String l, String r) {
             if (r.length() > l.length()) {
                 return true;
-            } else if (r.length() == l.length()) {
-                for (int i = 0; i < r.length(); i++) {
-                    if (l.charAt(i) != r.charAt(i)) {
-                        if (l.charAt(i) < r.charAt(i)) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                }
-                return false;
-            } else {
+            }
+            if (r.length() < l.length()) {
                 return false;
             }
+            for (int i = 0; i < r.length(); i++) {
+                if (l.charAt(i) != r.charAt(i)) {
+                    return l.charAt(i) < r.charAt(i);
+                }
+            }
+            return false;
         }
     }
 
