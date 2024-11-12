@@ -19,6 +19,26 @@ public class Trees {
      * 2 4
      */
     public static int[] trees(int[] arr, int k) {
+        int n = arr.length;
+        int l = 0, bestI = 0, bestJ = 0;
+        int res = Integer.MAX_VALUE;
+        var helper = new TreeHelper(k);
+
+        for (int r = 0; r < n; r++) {
+            helper.add(arr[r]);
+            while (helper.canRemove(arr[l])) {
+                helper.remove(arr[l]);
+                l++;
+            }
+            if ((helper.isGood()) && (res > r - l + 1)) {
+                res = Math.min(res, r - l + 1);
+                bestI = l;
+                bestJ = r;
+            }
+        }
+        return new int[]{bestI+1, bestJ+1};
+    }
+    public static int[] trees2(int[] arr, int k) {
         int sum = 0;
         int[] els = new int[k + 1];
         int l = 0;
@@ -61,6 +81,42 @@ public class Trees {
 
         final int[] result = trees(arr, target);
         System.out.println(result[0] + " " + result[1]);
+    }
+
+    private static class TreeHelper {
+        int uniqueCnt = 0;
+        int kinds = 0;
+        int[] trees = new int[250_000];
+
+        public TreeHelper(int k) {
+            kinds = k;
+        }
+
+        public boolean isGood() {
+            return uniqueCnt >= kinds;
+        }
+
+        public void add(int n) {
+            trees[n]++;
+            if (trees[n] == 1) {
+                uniqueCnt++;
+            }
+        }
+
+        public void remove(int n) {
+            trees[n]--;
+            if (trees[n] == 0) {
+                uniqueCnt--;
+            }
+        }
+
+        public boolean canRemove(int n) {
+            int unq = uniqueCnt;
+            if (trees[n] - 1 == 0) {
+                unq--;
+            }
+            return unq >= kinds;
+        }
     }
 
 }

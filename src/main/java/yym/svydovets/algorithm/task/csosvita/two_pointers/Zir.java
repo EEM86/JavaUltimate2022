@@ -21,6 +21,26 @@ public class Zir {
      */
     public static String zir(int n, int[] arrN, int m, int[] arrM) {
         int i = 0, j = 0;
+        int minDiff = Integer.MAX_VALUE;
+        int bestI = 0, bestJ = 0;
+
+        while (i < n && j < m) {
+            int currDiff = Math.abs(arrN[i] - arrM[j]);
+            if (minDiff > currDiff) {
+                minDiff = currDiff;
+                bestI = i;
+                bestJ = j;
+            }
+            if (arrN[i] < arrM[j]) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+        return arrN[bestI] + " " + arrM[bestJ];
+    }
+    public static String zir2(int n, int[] arrN, int m, int[] arrM) {
+        int i = 0, j = 0;
         int minSub = Integer.MAX_VALUE;
         int nPair = n+1;
         int mPair = m+1;

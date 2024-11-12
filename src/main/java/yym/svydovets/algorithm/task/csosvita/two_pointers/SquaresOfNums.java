@@ -12,7 +12,7 @@ public class SquaresOfNums {
      * Given the number N, print from 1 to 4 positive integers that have the sum of their squares equal to N.
      * These numbers must be sorted and the result must contain the smallest amount of terms. If there are
      * several solutions, print the smallest one in lexicographic order.
-     * 1 <= n <= 10000
+     * 1 <= n <= 10_000
      * Example:
      * Input 0: 3
      * Output 0: 0 // 1 1 1
@@ -21,7 +21,18 @@ public class SquaresOfNums {
      *
      */
     static List<Integer> findSquares(int n) {
-        return findSquaresDp(n);
+        for (int a = 1; a < 100; a++) {
+            for (int b = 1; b < 100; b++) {
+                for (int c = 1; c < 100; c++) {
+                    for (int d = 1; d < 100; d++) {
+                        if (a*a + b*b + c*c + d*d == n) {
+                            return List.of(a,b,c,d);
+                        }
+                    }
+                }
+            }
+        }
+        return List.of();
     }
 
     static List<Integer> findSquaresDp(int n) {

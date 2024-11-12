@@ -11,7 +11,7 @@ class SensorsTest {
         int[] arr = new int[]{1, 6, 12, 13};
         int n = 4;
 
-        final long result = Sensors.countSensorsOptimal(arr, n);
+        final long result = Sensors.countSensors(arr, n);
         assertEquals(5, result);
     }
 
@@ -20,7 +20,7 @@ class SensorsTest {
         int[] arr = new int[]{1, 3, 5, 8};
         int n = 4;
 
-        final long result = Sensors.countSensorsOptimal(arr, n);
+        final long result = Sensors.countSensors(arr, n);
         assertEquals(2, result);
     }
 
@@ -29,7 +29,7 @@ class SensorsTest {
         int[] arr = new int[]{0, 1, 4, 7, 8, 9, 10};
         int n = 3;
 
-        final long result = Sensors.countSensorsOptimal(arr, n);
+        final long result = Sensors.countSensors(arr, n);
         assertEquals(12, result);
     }
 

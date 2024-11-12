@@ -23,19 +23,16 @@ public class Sensors {
      * 1 3 5 8
      * Output 0: 2 // we can choose sensors 1 and 4 and sensors 2 and 4 because the distance between them > 4
      */
-    public static long countSensorsBruteForce(int[] arr, long n) {
-        long count = 0;
-        for (int left = 0; left < arr.length - 1; left++) {
-            int right = left + 1;
-            // Use while loop for the inner iteration
-            while (right < arr.length) {
-                if (arr[right] - arr[left] > n) {
-                    count++;
-                }
-                right++;
+    public static long countSensors(int[] arr, long r) {
+        int n = arr.length;
+        int j = 0, res = 0;
+        for (int i = 0; i < n; i++) {
+            while (j < n && arr[j] - arr[i] <= r) {
+                j++;
             }
+            res += n - j;
         }
-        return count;
+        return res;
     }
 
     public static long countSensorsOptimal(int[] arr, long n) {
@@ -79,10 +76,10 @@ public class Sensors {
         // Compare results from both solutions
 
         Arrays.sort(a);
-        if (countSensorsBruteForce(a, s) != countSensorsOptimal(a, s)) {
+        if (countSensors(a, s) != countSensorsOptimal(a, s)) {
             System.out.println("Array: " + Arrays.toString(a));
             System.out.println("Target sum: " + s);
-            System.out.println("Brute Force result: " + countSensorsBruteForce(a, s));
+            System.out.println("Brute Force result: " + countSensors(a, s));
             System.out.println("Optimal result: " + countSensorsOptimal(a, s));
             throw new RuntimeException("Found a bug!");
         }

@@ -11,7 +11,7 @@ public class Peretyn {
 
     /*
      * There are two arrays A and B, intersect them.
-     * First num - the length of array A, next line - the array itselft
+     * First num - the length of array A, next line - the array itself
      *
      * 1<= |A|, |B| <= 1000
      * -5000000 <= A[i], B[i] <= 5000000
@@ -37,12 +37,12 @@ public class Peretyn {
 
         int i = 0, j = 0;
 
-        while (i < n || j < m) {
-            if (((i < n && j < m) && (a[i] == b[j]))) {
+        while (i < n && j < m) {
+            if (a[i] == b[j]) {
                 res.add(a[i]);
                 i++;
                 j++;
-            } else if ((i < n) && ((j >= m) || (a[i] < b[j]))) {
+            } else if (a[i] < b[j]) {
                 i++;
             } else {
                 j++;
