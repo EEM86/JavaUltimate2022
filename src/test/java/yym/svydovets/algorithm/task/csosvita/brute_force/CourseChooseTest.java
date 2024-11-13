@@ -12,7 +12,7 @@ class CourseChooseTest {
     @Test
     void course() {
         int[][] courses = new int[][]{{0,0,0,1}, {0,0,1,0}, {0,1,1,1}, {1,1,1,1}, {0,0,0,0}, {1,0,0,1}};
-        final String result = CourseChoose.course(6, 4, courses);
+        final String result = CourseChoose.course(courses);
         assertEquals("2\n1 3", result);
     }
 }

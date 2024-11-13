@@ -11,7 +11,7 @@ public class HomogeneousNum {
      *
      * Example: input: 75 300, output: 5 (77, 88, 99, 111, 222)
      */
-    public static long getUniformNumOptimal(long a, long b) {
+    public static long getUniformNum(long a, long b) {
         throw new NotImplementedException();
     }
 }

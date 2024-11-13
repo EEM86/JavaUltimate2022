@@ -32,7 +32,7 @@ public class CourseChoose {
      * 2, 3 - the speciality where there is only B and no A
      * 1, 5 - the speciality without A and B courses
      */
-    static String course(int n, int m, int[][] programs) {
+    static String course(int[][] programs) {
         throw new NotImplementedException();
     }
 }
