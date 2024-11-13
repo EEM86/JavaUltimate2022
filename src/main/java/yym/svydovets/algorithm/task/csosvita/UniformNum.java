@@ -1,6 +1,6 @@
-package yym.svydovets.algorithm.task.csosvita.brute_force;
+package yym.svydovets.algorithm.task.csosvita;
 
-public class HomogeneousNum {
+public class UniformNum {
 
     /*
      * The positive number N is uniform if his digits are equal.
@@ -10,22 +10,6 @@ public class HomogeneousNum {
      * Example: input: 75 300, output: 5 (77, 88, 99, 111, 222)
      */
     public static long getUniformNum(long a, long b) {
-        return cnt(b) - cnt(a-1);
-    }
-    private static long cnt(long d) {
-        long org = d;
-        long cnt = 0;
-
-        while (d >= 10) {
-            cnt += 9; // amount is counted by adding 9 and dividing by 10
-            d /= 10;
-        }
-        long divisor = Long.parseLong("1".repeat(String.valueOf(org).length()));
-
-        return cnt + org / divisor;
-    }
-
-    public static long getUniformNumOld(long a, long b) {
         int res = 0;
 
         // Iterate over the possible number of digits (1 to 12)

@@ -33,9 +33,11 @@ public class CourseChoose {
      * 2, 3 - the speciality where there is only B and no A
      * 1, 5 - the speciality without A and B courses
      */
-    static String course(int n, int m, int[][] programs) {
+    public static String course(int[][] programs) {
 
         // Initialize variables for tracking minimum maximum set size and optimal courses
+        int n = programs.length;
+        int m = programs[0].length;
         int minMaxSetSize = n + 1;
         int optimalCourseA = 0, optimalCourseB = 0;
 
@@ -137,7 +139,7 @@ public class CourseChoose {
             }
             row++;
         }
-        course(rows, cols, arr);
+        course(arr);
 
     }
 

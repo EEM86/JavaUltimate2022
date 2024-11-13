@@ -20,13 +20,9 @@ public class BestNumber {
         for (int i = a; i <= b; i++) {
             if (isPrime(i)) {
                 int sqr = findSumOfSqr(i);
-                if (sqr > maxSqr) {
+                if (maxSqr < sqr) {
                     maxSqr = sqr;
                     bestNumber = i;
-                } else if (sqr == maxSqr) {
-                    if (bestNumber > i) {
-                        bestNumber = i;
-                    }
                 }
             }
         }
