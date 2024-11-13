@@ -11,7 +11,7 @@ class RequestsTest {
         int[] arr = new int[]{1,1,0,1,1,1};
         int n = 6;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(3, res);
     }
 
@@ -20,7 +20,7 @@ class RequestsTest {
         int[] arr = new int[]{1,0,1,1,0,1};
         int n = 6;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(2, res);
     }
 
@@ -29,7 +29,7 @@ class RequestsTest {
         int[] arr = new int[]{0,0,0,0,0,0};
         int n = 6;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(0, res);
     }
 
@@ -38,7 +38,7 @@ class RequestsTest {
         int[] arr = new int[]{1,0,0,0,0,1};
         int n = 6;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(1, res);
     }
 
@@ -47,7 +47,7 @@ class RequestsTest {
         int[] arr = new int[]{1,1,1,1,1,1};
         int n = 6;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(6, res);
     }
 
@@ -56,7 +56,7 @@ class RequestsTest {
         int[] arr = new int[]{0,1,1,1,1,0};
         int n = 6;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(4, res);
     }
 
@@ -65,7 +65,7 @@ class RequestsTest {
         int[] arr = new int[]{0,1,1,1,0,1,1,0};
         int n = 8;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(3, res);
     }
 
@@ -74,7 +74,7 @@ class RequestsTest {
         int[] arr = new int[]{1, 1, 0, 1, 1, 1, 0, 1, 1};
         int n = arr.length;
 
-        final int res = Requests.longestSeq(arr, n);
+        final int res = Requests.longestSeq(arr);
         assertEquals(3, res);
     }
 
