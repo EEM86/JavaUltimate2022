@@ -26,6 +26,15 @@ class SensorsTest {
 
     @Test
     void testCountSensors3() {
+        int[] arr = new int[]{1, 3, 6, 8};
+        int n = 4;
+
+        final long result = Sensors.countSensors(arr, n);
+        assertEquals(3, result);
+    }
+
+    @Test
+    void testCountSensors4() {
         int[] arr = new int[]{0, 1, 4, 7, 8, 9, 10};
         int n = 3;
 
