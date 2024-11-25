@@ -14,7 +14,7 @@ class SortTaskTest {
 
   @Test
   public void testMergeSort() {
-    int[] unsortedArray = {4, 2, 8, 1, 3, 7};
+    int[] unsortedArray = {4, 2, 8, 3, 7, 1};
     int[] sortedArray = {1, 2, 3, 4, 7, 8};
 
     SortTask.mergeSort(unsortedArray);
