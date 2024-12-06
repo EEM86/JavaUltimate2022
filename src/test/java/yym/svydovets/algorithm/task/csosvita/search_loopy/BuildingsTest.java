@@ -23,7 +23,7 @@ class BuildingsTest {
     @Test
     void buildings3() {
         int n = (int) Math.pow(2, 31) - 1;
-        final long result = Buildings.buildings(n);
-        System.out.println(result);
+        final int result = Buildings.buildings(n);
+        assertEquals(2147483646, result);
     }
 }

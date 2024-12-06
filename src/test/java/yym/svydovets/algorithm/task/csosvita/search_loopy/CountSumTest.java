@@ -27,6 +27,6 @@ class CountSumTest {
         int[] arr = new int[]{2,1,-5,7,3,6,-11,4,2};
 
         final int result = CountSum.countSum(arr, 3);
-        assertEquals(2, result);
+        assertEquals(4, result);
     }
 }

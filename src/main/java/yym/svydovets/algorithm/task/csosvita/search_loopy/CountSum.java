@@ -6,6 +6,24 @@ import java.util.Scanner;
 
 public class CountSum {
 
+    /*
+     * Given an array of integers and an integer n,
+     * return the total number of subarrays whose sum equals to k.
+     * A subarray is a contiguous non-empty sequence of elements within an array.
+     *
+     * The first input line has an integer n - the size of the array and an integer k.
+     * The next line has n integers: the contents of the array.
+     *
+     * 1 <= n <= 2*10^5
+     * -10^9 <= a_i <= 10^9
+     * -10^7 <= k <= 10^7
+     *
+     * Sample Input 0:
+     * 3 3
+     * 1 2 3
+     * Sample Output 0:
+     * 2
+     */
     public static int countSum(int[] arr, int k) {
         int res = 0;
         int prefixSum = 0;
@@ -20,37 +38,14 @@ public class CountSum {
                 res += prefixMap.get(prefixSum - k);
             }
 
-            // Update the map with the current prefix sum count
-            prefixMap.put(prefixSum, prefixMap.getOrDefault(prefixSum, 0) + 1);
-        }
-
-        return res;
-    }
-
-    public static int countSumOptimal(int[] arr, int k) {
-        int res = 0;
-
-        int[] prefix = new int[arr.length+1];
-
-        for (int i = 0; i < arr.length; i++) {
-            prefix[i+1] = prefix[i] + arr[i];
-        }
-
-        for (int i = 1; i < prefix.length; i++) {
-            if (prefix[i] == k) {
-                res++;
-            }
-            if (prefix[i] > k && prefix[i] - arr[i - 1] == k) {
-                res++;
+            if (prefixMap.containsKey(prefixSum)) {
+                prefixMap.put(prefixSum, prefixMap.get(prefixSum) + 1);
+            } else {
+                prefixMap.put(prefixSum, 1);
             }
         }
 
         return res;
-    }
-
-    private static int rsq(int l, int[] prefix, int r) {
-        final int result = prefix[r] - prefix[l];
-        return result;
     }
 
     public static void main(String[] args) {
@@ -61,7 +56,7 @@ public class CountSum {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        final int result = countSumOptimal(arr, k);
+        final int result = countSum(arr, k);
         System.out.println(result);
     }
 
