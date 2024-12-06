@@ -26,6 +26,22 @@ class RaskinBobbinsTest {
     }
 
     @Test
+    void raskinBobbins2() {
+        var firstTrip = new Trips();
+        firstTrip.m = 17;
+        firstTrip.n = 10;
+        firstTrip.trips = new int[]{5, 8, 5, 10, 10, 5, 9, 6, 2, 9};
+        var secondTrip = new Trips();
+        secondTrip.m = 7;
+        secondTrip.n = 9;
+        secondTrip.trips = new int[]{7, 5, 4, 3, 5, 8, 2, 5, 4, 7};
+        var arr = new Trips[]{firstTrip, secondTrip};
+
+        final String result = RaskinBobbins.raskinBobbinsCountingSort(arr);
+        assertEquals("2 7\n2 7", result);
+    }
+
+    @Test
     void testSorting() {
         int[] arr = new int[]{1,3,4,5,2};
         final int[] result = RaskinBobbins.countingSort(arr);
@@ -43,9 +59,9 @@ class RaskinBobbinsTest {
         }
     }
 
-    public static void main(String[] args) {
-        stressTest();
-    }
+//    public static void main(String[] args) {
+//        stressTest();
+//    }
 
     public static void runTest() {
         Random random = new Random();

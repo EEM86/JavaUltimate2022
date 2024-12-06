@@ -57,19 +57,22 @@ public class RaskinBobbins {
         return sb.toString();
     };
 
-    private static int[] findPair(int firstValue, int[ ] arr, int lastValue) {
-        boolean isFirstValueFound = false;
+    public static int[] findPair(int left, int[ ] arr, int right) {
+        int indexLeftResult = -1;
+        int indexRightResult = -1;
         int[] result = new int[2];
-        for (int i = 0; i < arr.length; i++) {
-            if (!isFirstValueFound && arr[i] == firstValue) {
-                result[0] = i;
-                isFirstValueFound = true;
-                continue;
+        for (int k = 0; k < arr.length; k++) {
+            if (indexLeftResult != -1 && indexRightResult != -1) {
+                break;
             }
-            if (arr[i] == lastValue) {
-                result[1] = i;
+            if (arr[k] == left && indexLeftResult == -1) {
+                indexLeftResult = k;
+            } else if (arr[k] == right && indexRightResult == -1) {
+                indexRightResult = k;
             }
         }
+        result[0] = Math.min(indexLeftResult, indexRightResult);
+        result[1] = Math.max(indexLeftResult, indexRightResult);
         return result;
     }
 
@@ -79,7 +82,8 @@ public class RaskinBobbins {
         int[] output = new int[arr.length];
         for (int i = arr.length - 1; i >= 0; i--) {
             int cur = arr[i];
-            output[countArr[cur] - 1] = cur;
+            final int idx = countArr[cur];
+            output[idx - 1] = cur;
             countArr[cur]--;
         }
         return output;
@@ -87,8 +91,8 @@ public class RaskinBobbins {
 
     private static int[] computeCountArr(int[] arr, int n) {
         int[] c = new int[n+1];
-        for (int i = 0; i < arr.length; i++) {
-            c[arr[i]]++;
+        for (int j : arr) {
+            c[j]++;
         }
         for (int i = 1; i < c.length; i++) {
             c[i] = c[i-1] + c[i];
@@ -121,53 +125,6 @@ public class RaskinBobbins {
         return sb.toString();
     }
 
-    // not pass stress test
-    static String raskinBobbins(Trips[] trips) {
-        var sb = new StringBuilder();
-        for (var trip : trips) {
-            int money = trip.m;
-            int[] arr = trip.trips;
-            boolean isScanningFinished = false;
-
-
-            for (int i = 0; i < arr.length - 1; i++) {
-                if (isScanningFinished) break;
-                int sumToFind = money - arr[i];
-                for (int j = i+1; j < arr.length; j++) {
-                    int cur = arr[j];
-                    if (sumToFind == cur) {
-                        if (arr[i] <= arr[j]) {
-                            sb.append(i+1).append(" ").append(j+1).append("\n");
-                        } else {
-                            sb.append(j+1).append(" ").append(i+1).append("\n");
-                        }
-                        isScanningFinished = true;
-                        break;
-                    }
-                }
-            }
-        }
-        if (!sb.isEmpty()) {
-            sb.deleteCharAt(sb.length() - 1);
-        }
-        return sb.toString();
-    }
-
-
-    public static class Trips {
-        public int m;
-        public int n;
-        public int[] trips;
-
-        public Trips() {};
-
-        public Trips(int n, int[] array, int m) {
-            this.n = n;
-            this.m = m;
-            this.trips = array;
-        }
-    }
-
     public static void main(String[] args) {
         var sc = new Scanner(System.in);
         var trips = new ArrayList<Trips>();
@@ -184,6 +141,20 @@ public class RaskinBobbins {
 
         final String result = raskinBobbinsCountingSort(trips.toArray(Trips[]::new));
         System.out.println(result);
+    }
+
+    public static class Trips {
+        public int m;
+        public int n;
+        public int[] trips;
+
+        public Trips() {};
+
+        public Trips(int n, int[] array, int m) {
+            this.n = n;
+            this.m = m;
+            this.trips = array;
+        }
     }
 
 }
