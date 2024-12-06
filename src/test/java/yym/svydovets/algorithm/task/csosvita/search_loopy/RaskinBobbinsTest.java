@@ -18,11 +18,18 @@ class RaskinBobbinsTest {
         var secondTrip = new Trips();
         secondTrip.m = 4;
         secondTrip.n = 4;
-        secondTrip.trips = new int[]{2,2,4,3,2};
+        secondTrip.trips = new int[]{2,2,4,3};
         var arr = new Trips[]{firstTrip, secondTrip};
 
-        final String result = RaskinBobbins.raskinBobbins(arr);
+        final String result = RaskinBobbins.raskinBobbinsCountingSort(arr);
         assertEquals("1 4\n1 2", result);
+    }
+
+    @Test
+    void testSorting() {
+        int[] arr = new int[]{1,3,4,5,2};
+        final int[] result = RaskinBobbins.countingSort(arr);
+        assertEquals("[1, 2, 3, 4, 5]", Arrays.toString(result));
     }
 
     public static void stressTest() {
@@ -60,9 +67,9 @@ class RaskinBobbinsTest {
 
 
         // Compare results from both solutions
-        if (!RaskinBobbins.raskinBobbins(trips).equals(RaskinBobbins.raskinBobbinsOptimal(trips))) {
-            System.out.println("Result 1: " + RaskinBobbins.raskinBobbins(trips));
-            System.out.println("Result 2: " + RaskinBobbins.raskinBobbinsOptimal(trips));
+        if (!RaskinBobbins.raskinBobbinsCountingSort(trips).equals(RaskinBobbins.raskinBobbinsHashTable(trips))) {
+            System.out.println("Result 1: " + RaskinBobbins.raskinBobbinsCountingSort(trips));
+            System.out.println("Result 2: " + RaskinBobbins.raskinBobbinsHashTable(trips));
             Arrays.stream(trips).forEach(x -> System.out.println(x.m + " " + x.n + " " + Arrays.toString(x.trips)));
             throw new RuntimeException("Found a bug!");
         }

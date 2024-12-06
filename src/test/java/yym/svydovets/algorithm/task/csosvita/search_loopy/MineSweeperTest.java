@@ -7,43 +7,40 @@ import org.junit.jupiter.api.Test;
 class MineSweeperTest {
 
     @Test
-    void printMineFieldChar() {
-        char[][] arr = new char[][]{
-            {'0', '0', '*', '0'},
-            {'*', '0', '0', '0'},
-            {'0', '0', '0', '0'},
-            {'0', '*', '0', '*'}
-        };
-        final String result = MineSweeper.printMineFieldChar(arr);
-        System.out.println(result);
-    }
-
-    @Test
     void printMineField() {
-        int[][] arr = new int[][]{
-            {0, 0, -10, 0},
-            {-10, 0, 0, 0},
-            {0, 0, 0, 0},
-            {0, -10, 0, -10}
+        String[][] board = new String[][]{
+            {"0", "0", "*", "0"},
+            {"*", "0", "0", "0"},
+            {"0", "0", "0", "0"},
+            {"0", "*", "0", "*"},
         };
-        final String result = MineSweeper.printMineField(arr);
-        System.out.println(result);
+        String expected = """
+            1 2 * 1
+            * 2 1 1
+            2 2 2 1
+            1 * 2 *""";
+
+        final String[][] resultBoard = MineSweeper.generateBoard(board);
+        final String result = MineSweeper.boardToString(resultBoard);
+        assertEquals(expected, result);
     }
 
     @Test
     void printMineField2() {
+        String[][] board = new String[][]{
+            {"*", "0", "0", "0", "0"},
+            {"0", "0", "*", "0", "0"},
+            {"0", "0", "0", "0", "0"},
+            {"0", "0", "0", "*", "0"},
+        };
         String expected = """
             * 2 1 1 0
             1 2 * 1 0
             0 1 2 2 1
             0 0 1 * 1""";
-        int[][] arr = new int[][]{
-            {-10, 0, 0, 0, 0},
-            {0, 0, -10, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, -10, 0}
-        };
-        final String result = MineSweeper.printMineField(arr);
+
+        final String[][] resultBoard = MineSweeper.generateBoard(board);
+        final String result = MineSweeper.boardToString(resultBoard);
         assertEquals(expected, result);
     }
 }

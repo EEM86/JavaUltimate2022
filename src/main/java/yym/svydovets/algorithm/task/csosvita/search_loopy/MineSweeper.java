@@ -23,127 +23,83 @@ public class MineSweeper {
      * 2 2 2 1
      * 1 * 2 *
      */
-    public static String printMineField(int[][] arr) {
-        var sb = new StringBuilder();
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                int cur = arr[i][j];
-                if (cur != -10) {
-                    changeCell(arr, i, j);
-                }
-                if (arr[i][j] == -10) {
-                    sb.append("*");
-                } else {
-                    sb.append(arr[i][j]);
-                }
-                if (j < arr[0].length - 1) {
-                    sb.append(" ");
-                }
-                if ((j == arr[0].length - 1) && (i != arr.length - 1)) {
-                    sb.append("\n");
+    public static String[][] generateBoard(String[][] board) {
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[0].length; col++) {
+                if (!board[row][col].equals("*")) {
+                    int count = countMines(board, row, col);
+                    board[row][col] = String.valueOf(count);
                 }
             }
         }
-        return sb.toString();
-
+        return board;
     }
 
-    private static void changeCell(int[][] arr, int row, int col) {
-        int cur = arr[row][col];
-        if (col > 0 && arr[row][col-1] == -10) {
-            cur++;
-        }
-        if (col > 0 && row > 0 && arr[row-1][col-1] == -10) {
-            cur++;
-        }
-        if (row > 0 && arr[row-1][col] == -10) {
-            cur++;
-        }
-        if (row > 0 && col < arr[0].length - 1 && arr[row-1][col+1] == -10) {
-            cur++;
-        }
-        if (col < arr[0].length - 1 && arr[row][col+1] == -10) {
-            cur++;
-        }
-        if (row < arr.length - 1 && col < arr[0].length - 1 && arr[row+1][col+1] == -10) {
-            cur++;
-        }
-        if (row < arr.length - 1 && arr[row+1][col] == -10) {
-            cur++;
-        }
-        if (row < arr.length - 1 && col > 0 && arr[row+1][col-1] == -10) {
-            cur++;
-        }
-        arr[row][col] = cur;
-    }
-
-    public static String printMineFieldChar(char[][] arr) {
+    public static String boardToString(String[][] board) {
         var sb = new StringBuilder();
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                char cur = arr[i][j];
-                if (cur != '*') {
-                    dfsChar(arr, i, j);
-                }
-                sb.append(arr[i][j]);
-                if (j < arr[0].length - 1) {
-                    sb.append(" ");
-                }
-                if ((j == arr[0].length - 1) && (i != arr.length - 1)) {
-                    sb.append("\n");
-                }
+        for (String[] strings : board) {
+            for (int j = 0; j < board[0].length; j++) {
+                sb.append(strings[j]).append(" ");
             }
+            if (!sb.isEmpty()) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+            sb.append("\n");
         }
         if (!sb.isEmpty()) {
-            sb.deleteCharAt(sb.length() -1);
+            sb.deleteCharAt(sb.length() - 1);
         }
         return sb.toString();
-
     }
 
-    private static void dfsChar(char[][] arr, int row, int col) {
-        char cur = arr[row][col];
-        if (col > 0 && arr[row][col-1] == '*') {
-            cur++;
+    private static int countMines(String[][] board, int row, int col) {
+        int[] dx = new int[]{-1, -1, -1, 0, 0, 1, 1, 1};
+        int[] dy = new int[]{-1, 0, 1, -1, 1, -1, 0, 1};
+        int count = 0;
+
+        for (int i = 0; i < dx.length; i++) {
+            int newRow = row + dx[i];
+            int newCol = col + dy[i];
+
+            if (inBoard(newRow, board, newCol) && hasMine(newRow, board, newCol)) {
+                count++;
+            }
         }
-        if (col > 0 && row > 0 && arr[row-1][col-1] == '*') {
-            cur++;
-        }
-        if (row > 0 && arr[row-1][col] == '*') {
-            cur++;
-        }
-        if (row > 0 && col < arr[0].length - 1 && arr[row-1][col+1] == '*') {
-            cur++;
-        }
-        if (col < arr[0].length - 1 && arr[row][col+1] == '*') {
-            cur++;
-        }
-        if (row < arr.length - 1 && col < arr[0].length - 1 && arr[row+1][col+1] == '*') {
-            cur++;
-        }
-        if (row < arr.length - 1 && arr[row+1][col] == '*') {
-            cur++;
-        }
-        if (row < arr.length - 1 && col > 0 && arr[row+1][col-1] == '*') {
-            cur++;
-        }
-        arr[row][col] = cur;
+
+        return count;
+    }
+
+    private static boolean inBoard(int row, String[][] board, int col) {
+        int rows = board.length;
+        int cols = board[0].length;
+
+        return ((row >= 0) && (row < rows)) &&  ((col >= 0) && (col < cols));
+    }
+
+    private static boolean hasMine(int row, String[][] board, int col) {
+        return board[row][col].equals("*");
     }
 
     public static void main(String[] args) {
         var sc = new Scanner(System.in);
-        int h = sc.nextInt();
+        int n = sc.nextInt();
         int m  = sc.nextInt();
         int k = sc.nextInt();
-        int[][] arr = new int[h][m];
+        // Initialize the board
+        String[][] board = new String[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                board[i][j] = "0";
+            }
+        }
+        // Read mine locations and place them on the board
         for (int i = 0; i < k; i++) {
             int row = sc.nextInt() - 1;
             int col = sc.nextInt() - 1;
-            arr[row][col] = -10;
+            board[row][col] = "*";
         }
-        final String result = printMineField(arr);
+        final String[][] formattedBoard = generateBoard(board);
+        final String result = boardToString(formattedBoard);
         System.out.println(result);
     }
 
