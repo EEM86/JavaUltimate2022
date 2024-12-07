@@ -1,6 +1,7 @@
 package yym.svydovets.algorithm.task.csosvita.search_loopy;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 class Search {
 
@@ -20,6 +21,32 @@ class Search {
      * Sample Output 0:
      * 1 3 3
      */
+    public static String searchOptimal(int[] arr, int key) {
+        Predicate<Integer> firstPredicate = x -> arr[x] >= key;
+        Predicate<Integer> secondPredicate = x -> arr[x] > key;
+        int firstOccurrence = findKeyWithPredicate(arr, key, firstPredicate);
+        if (firstOccurrence >= arr.length || arr[firstOccurrence] != key){
+            return "-1 -1 0";
+        }
+        int lastOccurrence = findKeyWithPredicate(arr, key, secondPredicate) - 1;
+        int totalKeys = lastOccurrence - firstOccurrence;
+        return String.format("%d %d %d", firstOccurrence, lastOccurrence, totalKeys + 1);
+    }
+
+    private static int findKeyWithPredicate(int[] arr, int key, Predicate<Integer> predicate) {
+        int bad = -1;
+        int good = arr.length;
+
+        while (good - bad > 1) {
+            int m = (bad + good) / 2;
+            if (predicate.test(m)) {
+                good = m;
+            } else {
+                bad = m;
+            }
+        }
+        return good;
+    }
     public static String search(int[] arr, int key) {
         int firstOccurrence = findFirstKey(arr, key);
         int lastOccurrence = findLastKey(arr, key);
