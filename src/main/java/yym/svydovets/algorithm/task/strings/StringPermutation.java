@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class StringPermutation {
 
   public static void main(String[] args) {
-    String s1 = "ab", s2 = "eidbaooo";
+    String s1 = "abc", s2 = "bbbca";
     System.out.println(checkInclusion(s1, s2));
   }
 
@@ -47,7 +47,7 @@ public class StringPermutation {
       s2Count[index]++;
       if (s1Count[index] == s2Count[index]) {
         matches++;
-      } else  {
+      } else if (s1Count[index] + 1 == s2Count[index]) {
         matches--;
       }
 
@@ -55,7 +55,7 @@ public class StringPermutation {
       s2Count[index]--;
       if (s1Count[index] == s2Count[index]) {
         matches++;
-      } else {
+      } else if (s1Count[index]-1 == s2Count[index]){
         matches--;
       }
       l++;
