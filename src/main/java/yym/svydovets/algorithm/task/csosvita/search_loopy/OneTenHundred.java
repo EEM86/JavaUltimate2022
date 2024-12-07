@@ -1,7 +1,6 @@
 package yym.svydovets.algorithm.task.csosvita.search_loopy;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class OneTenHundred {
 
@@ -26,33 +25,6 @@ public class OneTenHundred {
      * 0 0 1 0
      */
     public static String findNumbers(int[] arr) {
-        var sb = new StringBuilder();
-        long[] ones_pos = new long[65537];
-        for (int i = 0; i < ones_pos.length; i++) {
-            // use this formula inside binary search to avoid aux memory
-            ones_pos[i] = (long) i * (i + 1) / 2 + 1;
-        }
-        for (int cur : arr) {
-            int cand = Arrays.binarySearch(ones_pos, cur);
-            String res = cand > -1 ? "1" : "0";
-            sb.append(res).append(" ");
-        }
-        if (!sb.isEmpty()) {
-            sb.deleteCharAt(sb.length() - 1);
-        }
-        return sb.toString();
+        throw new NotImplementedException();
     }
-
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        final String result = findNumbers(arr);
-        System.out.println(result);
-    }
-
 }

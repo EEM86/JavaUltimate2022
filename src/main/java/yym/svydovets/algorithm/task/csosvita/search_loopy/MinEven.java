@@ -1,6 +1,6 @@
 package yym.svydovets.algorithm.task.csosvita.search_loopy;
 
-import java.util.Scanner;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class MinEven {
 
@@ -18,25 +18,6 @@ public class MinEven {
      * 4
      */
     public static int minEven(int[] arr) {
-        int minEven = Integer.MAX_VALUE;
-        for (int el : arr) {
-            if (el % 2 == 0) {
-                minEven = Math.min(minEven, el);
-            }
-        }
-        return minEven == Integer.MAX_VALUE ? -1 : minEven;
+        throw new NotImplementedException();
     }
-
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        final int result = minEven(arr);
-        System.out.println(result);
-    }
-
 }

@@ -1,9 +1,6 @@
 package yym.svydovets.algorithm.task.csosvita.search_loopy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class Buildings {
 
@@ -29,38 +26,13 @@ public class Buildings {
      * [] [] x - third step cannot be built because of lack of blocks
      */
     public static int buildings(int n) {
-        int good = 0;
-        int bad = n + 1;
-
-        while (bad - good > 1) {
-            int candidate = bad + (good - bad) / 2;
-            if (isGood(candidate, n)) {
-                good = candidate;
-            } else {
-                bad = candidate;
-            }
-        }
-        return good;
+        throw new NotImplementedException();
     }
 
-    private static boolean isGood(int k, int n) {
-        return (k * (k + 1) / 2) <= n;
-    }
-
+    /*
+     * O(1) solution using math formula
+     */
     public static int buildingsMath(int n) {
-        int k = (int) ((Math.sqrt(1 + 8L * n) - 1) / 2);
-        if ((long) k * (k + 1) / 2 > n) {
-            k--;
-        }
-        return k;
+        throw new NotImplementedException();
     }
-
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        int n = sc.nextInt();
-
-        final long result = buildings(n);
-        System.out.println(result);
-    }
-
 }

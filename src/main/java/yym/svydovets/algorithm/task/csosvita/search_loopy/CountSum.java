@@ -1,8 +1,6 @@
 package yym.svydovets.algorithm.task.csosvita.search_loopy;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class CountSum {
 
@@ -25,39 +23,7 @@ public class CountSum {
      * 2
      */
     public static int countSum(int[] arr, int k) {
-        int res = 0;
-        int prefixSum = 0;
-        Map<Integer, Integer> prefixMap = new HashMap<>();
-        prefixMap.put(0, 1);  // Base case to handle subarrays starting at index 0
-
-        for (int r = 0; r < arr.length; r++) {
-            prefixSum += arr[r];
-
-            // Check if there's a previous prefix sum that makes prefixSum - previous = k
-            if (prefixMap.containsKey(prefixSum - k)) {
-                res += prefixMap.get(prefixSum - k);
-            }
-
-            if (prefixMap.containsKey(prefixSum)) {
-                prefixMap.put(prefixSum, prefixMap.get(prefixSum) + 1);
-            } else {
-                prefixMap.put(prefixSum, 1);
-            }
-        }
-
-        return res;
-    }
-
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int k = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-        final int result = countSum(arr, k);
-        System.out.println(result);
+        throw new NotImplementedException();
     }
 
 }

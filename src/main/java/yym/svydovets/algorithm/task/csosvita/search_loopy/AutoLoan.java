@@ -1,6 +1,6 @@
 package yym.svydovets.algorithm.task.csosvita.search_loopy;
 
-import java.util.Scanner;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class AutoLoan {
 
@@ -26,40 +26,6 @@ public class AutoLoan {
      *    4  |      4.03  |   510.00  |     0.00
      */
     public static double solveRate(double price, int term, double monthly) {
-        double bad = -1.0;
-        double good = 101.0;
-        double epsilon = 1e-6;
-
-        while (good - bad > epsilon) {
-            double cand = (good + bad) / 2.0;
-            if (isGood(cand, price, term, monthly)) {
-                good = cand;
-            } else {
-                bad = cand;
-            }
-        }
-
-        return good;
+        throw new NotImplementedException();
     }
-
-    private static boolean isGood(double rate, double price, int term, double monthly) {
-        double monthRate = rate / 1200;
-        while (term-- != 0) {
-            price += price * monthRate - monthly;
-        }
-        return price >= 0;
-    }
-
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        String[] tokens = sc.nextLine().split(" ");
-        double price = Double.parseDouble(tokens[0]);
-        double monthly = Double.parseDouble(tokens[1]);
-        int term = Integer.parseInt(tokens[2]);
-
-        double rate = solveRate(price, term, monthly);
-        System.out.println(rate);
-        sc.close();
-    }
-
 }

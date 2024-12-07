@@ -1,7 +1,6 @@
 package yym.svydovets.algorithm.task.csosvita.search_loopy;
 
-import java.util.Scanner;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.NotImplementedException;
 
 class Search {
 
@@ -21,85 +20,7 @@ class Search {
      * Sample Output 0:
      * 1 3 3
      */
-    public static String searchOptimal(int[] arr, int key) {
-        Predicate<Integer> firstPredicate = x -> arr[x] >= key;
-        Predicate<Integer> secondPredicate = x -> arr[x] > key;
-        int firstOccurrence = findKeyWithPredicate(arr, key, firstPredicate);
-        if (firstOccurrence >= arr.length || arr[firstOccurrence] != key){
-            return "-1 -1 0";
-        }
-        int lastOccurrence = findKeyWithPredicate(arr, key, secondPredicate) - 1;
-        int totalKeys = lastOccurrence - firstOccurrence;
-        return String.format("%d %d %d", firstOccurrence, lastOccurrence, totalKeys + 1);
-    }
-
-    private static int findKeyWithPredicate(int[] arr, int key, Predicate<Integer> predicate) {
-        int bad = -1;
-        int good = arr.length;
-
-        while (good - bad > 1) {
-            int m = (bad + good) / 2;
-            if (predicate.test(m)) {
-                good = m;
-            } else {
-                bad = m;
-            }
-        }
-        return good;
-    }
     public static String search(int[] arr, int key) {
-        int firstOccurrence = findFirstKey(arr, key);
-        int lastOccurrence = findLastKey(arr, key);
-        int totalKeys = firstOccurrence == -1 ? 0 : lastOccurrence - firstOccurrence + 1;
-        return String.format("%d %d %d", firstOccurrence, lastOccurrence, totalKeys);
+        throw new NotImplementedException();
     }
-
-    private static int findFirstKey(int[] arr, int key) {
-        int bad = -1;
-        int good = arr.length;
-
-        while (good - bad > 1) {
-            int m = (bad + good) / 2;
-            if (arr[m] >= key) {
-                good = m;
-            } else {
-                bad = m;
-            }
-        }
-        if (good == arr.length || arr[good] != key) {
-            good = -1;
-        }
-        return good;
-    }
-
-    private static int findLastKey(int[] arr, int key) {
-        int bad = -1;
-        int good = arr.length;
-
-        while (good - bad > 1) {
-            int m = (bad + good) / 2;
-            if (arr[m] > key) {
-                good = m;
-            } else {
-                bad = m;
-            }
-        }
-        if (bad == arr.length - 1 || arr[bad] != key) {
-            bad = -1;
-        }
-        return bad;
-    }
-
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-        int key = sc.nextInt();
-        final String result = search(arr, key);
-        System.out.println(result);
-    }
-
 }
