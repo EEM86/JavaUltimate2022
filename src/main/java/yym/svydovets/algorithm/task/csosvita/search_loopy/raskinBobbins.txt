@@ -1,0 +1,51 @@
+Each time Sunny and Johnny take a trip to the Raskin Bobbins, they pool together dollars for ice cream.
+On any given day, the Raskin Bobbins offers a line of flavors. Each flavor, i,
+is numbered sequentially with a unique ID number from to and has a cost, c_i, associated with it.
+
+Given the value of m and the cost of each flavor for trips to the Raskin Bobbins,
+help Sunny and Johnny choose two flavors such that they spend their entire pool of money (m) during each visit.
+For each trip to the Raskin Bobbins, print the ID numbers for the two types of ice cream that Sunny and Johnny
+purchase as two space-separated integers on a new line. You must print the smaller ID first and the larger ID second.
+
+Note: Two ice creams having unique IDs and may have the same cost (i.e., c_i == c_j).
+
+Input Format
+
+The first line contains an integer, t, denoting the number of trips to the Raskin Bobbins. The 3t subsequent
+lines describe all of Sunny and Johnny's trips to the Raskin Bobbins; each trip is described as follows:
+
+The first line contains m.
+The second line contains n.
+The third line contains n space-separated integers denoting the cost of each respective flavor.
+The i^th integer corresponding to the cost, c_i, for the ice cream with ID number i (where 1<= i <= n).
+
+
+Constraints
+1 <= t <= 50
+2 <= m <= 2 * 10^5
+2 <= n <= 10^5
+1 <= c_i <= 2 * 10^5, where i є [1,n]
+It is guaranteed that there will always be a unique solution. The sum of all -s in the input file will not exceed
+5 * 10^5.
+
+Output Format
+
+Print two space-separated integers denoting the respective ID numbers for the flavors they choose to purchase,
+where the smaller ID is printed first and the larger ID is printed second.
+Recall that each ice cream flavor has a unique ID number in the inclusive range from 1 to n.
+
+
+Sample Input 0
+2
+4
+5
+1 4 5 3 2
+4
+4
+2 2 4 3
+
+Sample Output 0
+
+1 4
+1 2
+
