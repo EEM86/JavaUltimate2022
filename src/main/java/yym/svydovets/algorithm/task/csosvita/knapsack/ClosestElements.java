@@ -8,7 +8,7 @@ public class ClosestElements {
 
     /*
      * Given a sorted integer array, two ints k and x, return the k closest ints to x in the array.
-     * An int is closer to x than an int b if:
+     * An 'a' int is closer to x than an int 'b' if:
      * |a-x| <  |b-x|, or
      * |a-x| == |b-x| and a < b
      *
@@ -24,6 +24,30 @@ public class ClosestElements {
      * Sample Output 0:
      * 1 2 3 4
      */
+    public static String findClosestElements(int k, int[] arr, int x) {
+        int left = 0, right = arr.length - k;
+
+        // Binary search to find the leftmost position
+        while (left < right) {
+            int mid = (left + right) / 2;
+            // Compare mid and mid + k based on their distance to x
+            if (x - arr[mid] > arr[mid + k] - x) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+
+        var sb = new StringBuilder();
+        for (int i = left; i < left + k; i++) {
+            sb.append(arr[i]);
+            if (i != left + k - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
+    }
+
     public static String getClosest(int k, int[] arr, int x) {
         Comparator<Integer> comp = createComparator(x);
         PriorityQueue<Integer> pq = new PriorityQueue<>(comp);
