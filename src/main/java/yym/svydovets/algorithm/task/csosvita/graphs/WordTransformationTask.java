@@ -1,4 +1,4 @@
-package yym.svydovets.algorithm.task.matrix;
+package yym.svydovets.algorithm.task.csosvita.graphs;
 
 import java.util.ArrayList;
 import java.util.HashMap;

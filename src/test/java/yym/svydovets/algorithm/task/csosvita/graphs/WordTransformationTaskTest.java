@@ -1,9 +1,10 @@
-package yym.svydovets.algorithm.task.matrix;
+package yym.svydovets.algorithm.task.csosvita.graphs;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import yym.svydovets.algorithm.task.csosvita.graphs.WordTransformationTask;
 
 class WordTransformationTaskTest {
 
