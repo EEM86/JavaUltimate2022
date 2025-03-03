@@ -2,6 +2,7 @@ package yym.svydovets.algorithm.task.csosvita.search;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 class SortIntsTest {
@@ -63,6 +64,27 @@ class SortIntsTest {
         assertEquals(6, arr[5]);
         assertEquals(7, arr[6]);
         assertEquals(8, arr[7]);
+    }
+
+    @Test
+    void auxMergeTest() {
+        String[] names = new String[]{"Mary", "John", "Emma"};
+        int[] heights = new int[]{180,165,170};
+        final String[] strings = SortInts.sortPeople(names, heights);
+        System.out.println(Arrays.toString(strings));
+        System.out.println(Arrays.toString(heights));
+        assertEquals("Mary", strings[0]);
+        assertEquals("Emma", strings[1]);
+        assertEquals("John", strings[2]);
+    }
+
+    @Test
+    void auxMergeTest2() {
+        String[] names = new String[]{"IEO","Sgizfdfrims","QTASHKQ","Vk","RPJOFYZUBFSIYp","EPCFFt","VOYGWWNCf","WSpmqvb"};
+        int[] heights = new int[]{17233,32521,14087,42738,46669,65662,43204,8224};
+        final String[] strings = SortInts.sortPeople(names, heights);
+        System.out.println(Arrays.toString(strings));
+        System.out.println(Arrays.toString(heights));
     }
 
 }

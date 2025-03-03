@@ -7,42 +7,40 @@ import java.util.Scanner;
 
 public class MergeIntervals {
 
-    public static String mergeIntervals(int[][] intervals) {
+    /*
+     * Given an array of intervals representing video watch times,
+     * where each interval is defined as [start, end] —
+     * indicating the start and stop times of a video segment.
+     * Merge all overlapping intervals and return an array
+     * of the non-overlapping intervals that cover the same time range as the input.
+     *
+     * Your goal is to implement the merge routine to solve this problem.
+     *
+     * 1 <= n <= 10^5
+     * intervals[i].length == 2
+     * 0 <= start_i <= end_i <= 10^4
+     *
+     * Sample Input 0:
+     * [[1,3], [2,6], [8,10], [15,18]]
+     * Sample Output 0:
+     * "1 6
+     *  8 10
+     *  15 18"
+     * Explanation 0:
+     * Since intervals [1,3] and [2,6] overlap, merge them into [1,6]
+     */
+    public static List<int[]> mergeIntervals(int[][] intervals) {
         Arrays.sort(intervals, ((a, b) -> a[0] - b[0]));
         int[] prev = null;
         List<int[]> accum = new ArrayList<>();
         for (int[] interval : intervals) {
-            if (isOverlapped(interval, prev)) {
+            if (prev != null && interval[0] <= prev[1]) {
                 prev[1] = Math.max(prev[1], interval[1]);
             } else {
                 prev = interval;
                 accum.add(interval);
             }
         }
-
-        var sb = new StringBuilder();
-        for (int[] interval : accum) {
-            sb.append(interval[0]).append(" ").append(interval[1]).append("\n");
-        }
-        if (!sb.isEmpty()) {
-            sb.deleteCharAt(sb.length() - 1);
-        }
-        return sb.toString();
+        return accum;
     }
-
-    private static boolean isOverlapped(int[] interval, int[] prev) {
-        return prev != null && interval[0] <= prev[1];
-    }
-
-    public static void main(String[] args) {
-        var sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[][] intervals = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            intervals[i] = new int[]{sc.nextInt(), sc.nextInt()};
-        }
-        final String result = mergeIntervals(intervals);
-        System.out.println(result);
-    }
-
 }

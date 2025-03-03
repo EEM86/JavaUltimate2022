@@ -33,4 +33,10 @@ public class HowMany {
         }
     }
 
+
+/*
+ * while (n log n * k log n >= k * n)
+ *      k++
+ */
+
 }

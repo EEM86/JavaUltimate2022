@@ -118,4 +118,51 @@ public class SortInts {
             }
         }
     }
+
+    public static String[] sortPeople(String[] names, int[] heights) {
+        int n = heights.length;
+        String[] auxNames = new String[n / 2];
+        int[] auxHeights = new int[n / 2];
+        auxMergeSort(names, heights, 0, n, auxNames, auxHeights);
+        return names;
+    }
+
+    private static void auxMergeSort(String[] names, int[] heights, int l, int r, String[] auxNames, int[] auxHeights) {
+        if (r - l < 2) {
+            return;
+        }
+
+        int mid = (r + l) / 2;
+        auxMergeSort(names, heights, l, mid, auxNames, auxHeights);
+        auxMergeSort(names, heights, mid, r, auxNames, auxHeights);
+
+
+        auxMerge(names, heights, l, mid, r, auxNames, auxHeights);
+    }
+
+    private static void auxMerge(String[] names, int[] heights, int l, int mid, int r, String[] auxNames, int[] auxHeights) {
+        int idx = 0;
+        for (int i = l; i < mid; i++, idx++) {
+            auxNames[idx] = names[i];
+            auxHeights[idx] = heights[i];
+        }
+
+        int curLeft = 0;
+        int curRight = mid;
+        int outIdx = l;
+        int leftLength = mid - l;
+
+        while (curLeft < leftLength || curRight < r) {
+            if (curRight == r || (curLeft < leftLength && auxHeights[curLeft] > heights[curRight])) {
+                heights[outIdx] = auxHeights[curLeft];
+                names[outIdx] = auxNames[curLeft];
+                curLeft++;
+            } else {
+                heights[outIdx] = heights[curRight];
+                names[outIdx] = names[curRight];
+                curRight++;
+            }
+            outIdx++;
+        }
+    }
 }
