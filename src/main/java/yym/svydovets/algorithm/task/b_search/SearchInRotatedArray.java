@@ -17,33 +17,37 @@ public class SearchInRotatedArray {
    * Example:
    * Input: nums = [4,5,6,7,0,1,2], target = 0
    * Output: 4
+   * https://leetcode.com/problems/search-in-rotated-sorted-array/
    */
   public static int search(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
+    int bad = -1;
+    int good = nums.length;
 
-    while (left <= right) {
-      int mid = left + (right - left) / 2;
-      if (nums[mid] == target) {
-        return mid;
+    while (good - bad > 1) {
+      int candidate = (good + bad) / 2;
+      if (nums[candidate] == target) {
+        return candidate;
       }
-
-      if (nums[mid] >= nums[left]) {
-        if (target < nums[mid] && target >= nums[left]) {
-          right = mid - 1;
-        } else {
-          left = mid + 1;
-        }
-      }
-
-      if (nums[mid] <= nums[right]) {
-        if (target > nums[mid] && target <= nums[right]) {
-          left = mid + 1;
-        } else {
-          right = mid - 1;
-        }
+      if (isGood(candidate, nums, target)) {
+        good = candidate;
+      } else {
+        bad = candidate;
       }
     }
-    return -1;
+    return (good == nums.length || nums[good] != target) ? -1 : good;
+  }
+
+  private static boolean isGood(int candidate, int[] nums, int target) {
+    boolean isGood = false;
+
+    if (nums[candidate] >= nums[0]) {
+        return nums[candidate] > target && target >= nums[0];
+    };
+
+    if (nums[candidate] <= nums[nums.length - 1]) {
+        return target <= nums[candidate] || target > nums[nums.length - 1];
+    }
+    return isGood;
   }
 
 }
